@@ -25,7 +25,5 @@ public class AddressDetails {
     private String floorNumber;
     private String sideFloor;
     private String houseNumber;
-    private String location;
-    private String locationType;
     private String totalAddress;
 }

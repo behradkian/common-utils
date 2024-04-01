@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0d223b2d-cde2-4234-8ee9-4393f4a2eaf1" name="Changes" comment="[feature] add utils">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/panda/common/date/CalendarUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/date/CalendarUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/panda/common/date/DateTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/date/DateTime.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/panda/common/date/PersianDateParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/date/PersianDateParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/panda/common/general/location/AddressDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/general/location/AddressDetails.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +179,7 @@
       <option name="presentableId" value="Default" />
       <updated>1711892752117</updated>
       <workItem from="1711892755388" duration="12488000" />
-      <workItem from="1711909851326" duration="29918000" />
+      <workItem from="1711909851326" duration="31279000" />
     </task>
     <task id="LOCAL-00001" summary="[feature] add utils">
       <created>1711973977534</created>
