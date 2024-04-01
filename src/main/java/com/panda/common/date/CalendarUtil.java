@@ -57,12 +57,12 @@ public class CalendarUtil {
                     jalaliCalendar.setTime(dateFormat.getCalendar().getTime());
 
                     return jalaliCalendar;
-                } else {
+                } else
                     throw new Exception("the given 'format' either is null or with no value.");
-                }
-            } else {
+
+            } else
                 throw new Exception("the given 'date' either is null or with no value.");
-            }
+
         } catch (Exception var6) {
             return null;
         }
@@ -78,15 +78,13 @@ public class CalendarUtil {
                             Integer.valueOf(dateparam[2]));
                     JalaliCalendar jalaliCalendar = new JalaliCalendar(dateTime);
                     return jalaliCalendar;
-                } else {
-                    throw new Exception(
-                            "the given 'date' is not in correct format use 'YYYY/MM/DD'.");
-                }
-            } else {
-                throw new Exception(
-                        "the given 'date' either is null or with no value.");
-            }
-        } catch (Exception var6) {
+                } else
+                    throw new Exception("the given 'date' is not in correct format use 'YYYY/MM/DD'.");
+
+            } else
+                throw new Exception("the given 'date' either is null or with no value.");
+
+        } catch (Exception e) {
             return null;
         }
     }

@@ -11,13 +11,7 @@ import java.util.TimeZone;
 public class DateTime implements Serializable, Cloneable, Comparable {
 
     private static final long serialVersionUID = 0x164276b556118bb5L;
-    private int year;
-    private int month;
-    private int day;
-    private int hour;
-    private int minute;
-    private int second;
-    private int millisecond;
+    private int year, month, day, hour, minute, second, millisecond;
     private TimeZone timeZone;
 
     public DateTime() {
@@ -30,7 +24,6 @@ public class DateTime implements Serializable, Cloneable, Comparable {
     public DateTime(int year, int month, int day, int hour, int minute) {
         this(year, month, day, hour, minute, 0, 0, TimeZone.getDefault());
     }
-
 
     public DateTime(int year, int month, int day, int hour, int minute, int second) {
         this(year, month, day, hour, minute, second, 0, TimeZone.getDefault());
@@ -78,11 +71,6 @@ public class DateTime implements Serializable, Cloneable, Comparable {
     }
 
     @Override
-    public String toString() {
-        return String.format("%1$04d/%2$02d/%3$02d %4$02d:%5$02d:%6$02d", Integer.valueOf(year), Integer.valueOf(month), Integer.valueOf(day), Integer.valueOf(hour), Integer.valueOf(minute), Integer.valueOf(second));
-    }
-
-    @Override
     public int hashCode() {
         int result = year;
         result = 31 * result + month;
@@ -91,6 +79,11 @@ public class DateTime implements Serializable, Cloneable, Comparable {
         result = 31 * result + minute;
         result = 31 * result + second;
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%1$04d/%2$02d/%3$02d %4$02d:%5$02d:%6$02d", year, month, day, hour, minute, second);
     }
 
     @Override
