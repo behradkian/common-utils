@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0d223b2d-cde2-4234-8ee9-4393f4a2eaf1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/bank/card/Card.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/bank/customer/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/bank/customer/RelatedPerson.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/bank/deposit/Deposit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/bank/enumeration/BankType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/bank/enumeration/DepositType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/bank/enumeration/RelationType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/bank/exception/BankException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/bank/exception/BankRuntimeException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/convert/GeneralConvertor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/convert/JsonConvertor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/convert/NumberToWordConvertor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/date/CalendarUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/date/DateConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/date/DateTime.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/date/DateUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/date/Equinox.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/date/JalaliCalendar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/date/PersianCalendar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/date/PersianCalendarConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/date/PersianCalendarUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/date/PersianDateParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/encription/AESEncryption.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/general/enumeration/AddressType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/general/enumeration/GenderType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/general/enumeration/PersianMonthType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/general/enumeration/PersianWeekDays.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/general/enumeration/PersonType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/general/exception/DateException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/general/exception/EncryptionException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/general/exception/NetworkRuntimeException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/general/exception/PandaException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/general/exception/PandaRuntimeException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/general/exception/ResourceNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/general/exception/ValidationException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/general/location/Address.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/general/location/AddressDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/general/location/City.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/general/location/Country.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/general/person/LegalPerson.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/general/person/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/general/person/RealPerson.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/general/user/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/string/StringUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/validation/PatternValidation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/panda/common/convert/NumberToWordConvertorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/panda/common/date/DateUtilsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/panda/common/encryption/AESEncryptionTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="package-info" />
+        <option value="Class" />
+        <option value="Enum" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\Developement\Java\.m2" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../Maven/apache-maven-3.6.3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2eSKsImNQR6UMnAgGD527HirFO1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/Developement/Java/Projects/PandaCommon/src/main/java/com/panda/common/aa",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Developement\Java\Projects\PandaCommon\src\main\java\com\panda\common\aa" />
+      <recent name="D:\Developement\Java\Projects\PandaCommon\src\main\java\com\panda\common\convert" />
+      <recent name="D:\Developement\Java\Projects\PandaCommon\src\main\java\com\panda\common\date" />
+      <recent name="D:\Developement\Java\Projects\PandaCommon\src\main\java\com\panda\common\validation" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Developement\Java\Projects\PandaCommon\src\main\java\com\panda\common\string" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.panda.common.date" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.panda.common.convert" />
+      <recent name="ir.pedrad.bank.service.dto.general" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.DateTime">
+    <configuration name="DateTime" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.panda.common.date.DateTime" />
+      <module name="PandaCommon" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.panda.common.general.enumeration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in PandaCommon" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PandaCommon" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NumberToWordConvertorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PandaCommon" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.panda.common.convert.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.panda.common.convert" />
+      <option name="MAIN_CLASS_NAME" value="com.panda.common.convert.NumberToWordConvertorTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NumberToWordConvertorTest.convertToEnglishTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PandaCommon" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.panda.common.convert.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.panda.common.convert" />
+      <option name="MAIN_CLASS_NAME" value="com.panda.common.convert.NumberToWordConvertorTest" />
+      <option name="METHOD_NAME" value="convertToEnglishTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NumberToWordConvertorTest.giveWrongString_getEmptyString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PandaCommon" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.panda.common.convert.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.panda.common.convert" />
+      <option name="MAIN_CLASS_NAME" value="com.panda.common.convert.NumberToWordConvertorTest" />
+      <option name="METHOD_NAME" value="giveWrongString_getEmptyString" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="PandaCommon" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="PandaCommon" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.DateTime" />
+        <item itemvalue="JUnit.All in PandaCommon" />
+        <item itemvalue="JUnit.NumberToWordConvertorTest" />
+        <item itemvalue="JUnit.NumberToWordConvertorTest.giveWrongString_getEmptyString" />
+        <item itemvalue="JUnit.NumberToWordConvertorTest.convertToEnglishTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0d223b2d-cde2-4234-8ee9-4393f4a2eaf1" name="Changes" comment="" />
+      <created>1711892752117</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1711892752117</updated>
+      <workItem from="1711892755388" duration="12488000" />
+      <workItem from="1711909851326" duration="27696000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
