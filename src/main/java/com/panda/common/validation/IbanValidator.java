@@ -4,6 +4,4 @@ public class IbanValidator extends Validator{
 
     private IbanValidator() {
     }
-
-
 }

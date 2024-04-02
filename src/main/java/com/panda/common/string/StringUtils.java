@@ -1,5 +1,7 @@
 package com.panda.common.string;
 
+import com.panda.common.convert.JsonConvertor;
+
 import java.util.regex.Pattern;
 
 public class StringUtils {
@@ -44,6 +46,10 @@ public class StringUtils {
 
     public static String addSpaceBetweenDigitAndWord(String digitWord) {
         return Pattern.compile("(?<=[^0-9])(?=[0-9])|(?<=[0-9])(?=[^0-9])").matcher(digitWord).find() ? digitWord.replaceAll("(?<=[^0-9])(?=[0-9])|(?<=[0-9])(?=[^0-9])", " ") : digitWord;
+    }
+
+    public static String toString(Object object){
+        return JsonConvertor.object2JsonString(object);
     }
 
 
