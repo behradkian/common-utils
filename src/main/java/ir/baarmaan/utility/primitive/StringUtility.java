@@ -52,5 +52,4 @@ public class StringUtility {
         return JsonConvertor.object2JsonString(object);
     }
 
-
 }
