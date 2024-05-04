@@ -1,0 +1,10 @@
+
+f	java:S117e"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÓŸğ“
+z
+java:S1149Q"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(ùÕÑşûÿÿÿÿ
+2
+java:S5542"Use a secure padding scheme.(É©ü
+2
+java:S55422"Use a secure padding scheme.(É©ü
+B
+java:S1905X"'Remove this unnecessary cast to "long".(ç¹ñÙùÿÿÿÿ

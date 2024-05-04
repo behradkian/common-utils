@@ -1,0 +1,25 @@
+
+W
+java:S4973*"<Strings and Boxed types should be compared using "equals()".(Œ£š´ıÿÿÿÿ
+U
+java:S1854""?Remove this useless assignment to local variable "doubleValue".(ÈÀœ
+F
+java:S1481 "0Remove this unused "doubleValue" local variable.(Öø¹Ì
+\
+java:S1126*"AReplace this if-then-else statement by a single return statement.(Œ£š´ıÿÿÿÿ
+S
+java:S63530"=Use concise character class syntax '\\D' instead of '[^0-9]'.(“ñí…
+R
+java:S63530"<Use concise character class syntax '\\d' instead of '[0-9]'.(“ñí…
+R
+java:S63530"<Use concise character class syntax '\\d' instead of '[0-9]'.(“ñí…
+S
+java:S63530"=Use concise character class syntax '\\D' instead of '[^0-9]'.(“ñí…
+S
+java:S63530"=Use concise character class syntax '\\D' instead of '[^0-9]'.(“ñí…
+R
+java:S63530"<Use concise character class syntax '\\d' instead of '[0-9]'.(“ñí…
+R
+java:S63530"<Use concise character class syntax '\\d' instead of '[0-9]'.(“ñí…
+S
+java:S63530"=Use concise character class syntax '\\D' instead of '[^0-9]'.(“ñí…
