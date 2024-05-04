@@ -7,17 +7,19 @@ import java.io.Serializable;
 @Getter
 public enum PersianWeekDays implements Serializable {
 
-    SHANBE(1),
-    YEKSHANBE(2),
-    DOSHANBE(3),
-    SESHANBE(4),
-    CHAHARSHANBE(5),
-    PANJSHANBE(6),
-    JOME(7);
+    SHANBE(1,true),
+    YEKSHANBE(2,true),
+    DOSHANBE(3,true),
+    SESHANBE(4,true),
+    CHAHARSHANBE(5,true),
+    PANJSHANBE(6,false),
+    JOME(7,false);
 
     private int id;
+    private boolean isWorkingDay;
 
-    PersianWeekDays(int id) {
+    PersianWeekDays(int id, boolean isWorkingDay) {
         this.id = id;
+        this.isWorkingDay = isWorkingDay;
     }
 }
