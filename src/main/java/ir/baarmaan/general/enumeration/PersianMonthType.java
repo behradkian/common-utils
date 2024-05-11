@@ -1,10 +1,14 @@
 package ir.baarmaan.general.enumeration;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import ir.baarmaan.general.exception.unchecked.InvalidEnumException;
 import lombok.Getter;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 @Getter
+@JsonFormat(with = JsonFormat.Feature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
 public enum PersianMonthType implements Serializable {
 
     FARVARDIN(1,31),
@@ -21,11 +25,17 @@ public enum PersianMonthType implements Serializable {
     ESFAND(12,29),
     ESFAND_IN_KABISE(12,30);
 
-    private int id;
-    private int days;
+    private final Integer id;
+    private final Integer days;
 
     PersianMonthType(int id, int days) {
         this.id = id;
         this.days = days;
     }
+
+    public static PersianMonthType getById(int id) {
+        return Arrays.stream(values()).filter(v -> v.id.equals(id)).findFirst()
+                .orElseThrow(() -> new InvalidEnumException(id + " in " + PersianMonthType.class.getName() + " is not valid"));
+    }
+
 }
