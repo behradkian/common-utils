@@ -1,6 +1,7 @@
 package ir.baarmaan.general.enumeration;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import ir.baarmaan.general.exception.unchecked.InvalidEnumException;
 import lombok.Getter;
 
 import java.io.Serializable;

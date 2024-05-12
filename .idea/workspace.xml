@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0d223b2d-cde2-4234-8ee9-4393f4a2eaf1" name="Changes" comment="[feature] validation">
+    <list default="true" id="0d223b2d-cde2-4234-8ee9-4393f4a2eaf1" name="Changes" comment="[revision] modify enumeration">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/panda/common/validation/IbanValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panda/common/validation/IbanValidator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,10 +34,12 @@
     <option name="generalSettings">
       <MavenGeneralSettings>
         <option name="localRepository" value="D:\Developement\Java\.m2" />
-        <option name="mavenHome" value="$PROJECT_DIR$/../../Maven/apache-maven-3.6.3" />
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2eSKsImNQR6UMnAgGD527HirFO1" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -46,22 +48,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Developement/Java/Projects/PandaCommon/src/main/java/com/panda/common/aa&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "JUnit.ir.baarmaan.utility in BaarmaanCommon.executor": "Run",
+    "Maven.BaarmaanCommon [clean,install].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Developement/Java/Projects/BaarmaanCommon",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "MavenSettings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ir.baarmaan.general.enumeration" />
+      <recent name="ir.baarmaan.general.exception" />
+      <recent name="ir.baarmaan.general.exception.unchecked" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Developement\Java\Projects\PandaCommon\src\main\java\com\panda\common\aa" />
       <recent name="D:\Developement\Java\Projects\PandaCommon\src\main\java\com\panda\common\convert" />
@@ -80,7 +98,7 @@
       <recent name="ir.pedrad.bank.service.dto.general" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.EmailValidatorTest">
+  <component name="RunManager" selected="JUnit.ir.baarmaan.utility in BaarmaanCommon">
     <configuration name="DateTime" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.panda.common.date.DateTime" />
       <module name="PandaCommon" />
@@ -138,24 +156,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EmailValidatorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PandaCommon" />
+    <configuration name="ir.baarmaan.utility in BaarmaanCommon" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BaarmaanCommon" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.panda.common.validation.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.panda.common.validation" />
-      <option name="MAIN_CLASS_NAME" value="com.panda.common.validation.EmailValidatorTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="PACKAGE_NAME" value="ir.baarmaan.utility" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.EmailValidatorTest" />
+        <item itemvalue="JUnit.ir.baarmaan.utility in BaarmaanCommon" />
         <item itemvalue="Application.HashGenerator" />
         <item itemvalue="JUnit.AESEncryptionTest.encryptAndDecryptBuilder" />
         <item itemvalue="JUnit.AESEncryptionTest" />
@@ -175,6 +196,15 @@
       <workItem from="1711909851326" duration="41672000" />
       <workItem from="1712077946959" duration="4168000" />
       <workItem from="1712158655629" duration="3380000" />
+      <workItem from="1715445968055" duration="633000" />
+      <workItem from="1715446614606" duration="51000" />
+      <workItem from="1715446833067" duration="205000" />
+      <workItem from="1715447050130" duration="36000" />
+      <workItem from="1715447249655" duration="1784000" />
+      <workItem from="1715449059025" duration="1704000" />
+      <workItem from="1715451851733" duration="559000" />
+      <workItem from="1715531767916" duration="941000" />
+      <workItem from="1715533556032" duration="339000" />
     </task>
     <task id="LOCAL-00001" summary="[feature] add utils">
       <created>1711973977534</created>
@@ -204,7 +234,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712083848746</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="[revision] modify enumeration">
+      <option name="closed" value="true" />
+      <created>1715451972724</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1715451972724</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,6 +264,7 @@
     <MESSAGE value="[feature] add utils" />
     <MESSAGE value="[revision] trim address" />
     <MESSAGE value="[feature] validation" />
-    <option name="LAST_COMMIT_MESSAGE" value="[feature] validation" />
+    <MESSAGE value="[revision] modify enumeration" />
+    <option name="LAST_COMMIT_MESSAGE" value="[revision] modify enumeration" />
   </component>
 </project>
