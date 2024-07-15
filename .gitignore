@@ -1,38 +1,80 @@
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+ Gradle
+# ------
+.gradle
+/build
 
-### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
-*.iws
-*.iml
-*.ipr
+# IDEA
+# ----
+.idea
+.idea/
+.shelf
+/*.iml
+/*.ipr
+/*.iws
+/out
 
-### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
+/out/*.*
+
+
+# Eclipse
+# -------
+*.classpath
+*.project
+*.settings
+
+/bin
+.metadata/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+
+# Eclipse Core
 .project
-.settings
+
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+
+# STS (Spring Tool Suite)
 .springBeans
-.sts4-cache
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+# Code Recommenders
+.recommenders/
+
+# Logs
+# ----
+/*.log
+
+# Others
+# ----
+**/*.class
+**/*.bin
+**/*.build
+**/*.out
+build
 build/
-!**/src/main/**/build/
-!**/src/test/**/build/
+**/*.jar
+*.pb
 
-### VS Code ###
-.vscode/
+# Maven specific
 
-### Mac OS ###
-.DS_Store
+target/
+
+#Skip all SVN related
+.svn/
+.svn/entries
+.svn*
+*/.svn/*
+
+#Skip all CVS related
+CVS/
+/CVS/*
+**/CVS/*
+.cvsignore
+*/.cvsignore
