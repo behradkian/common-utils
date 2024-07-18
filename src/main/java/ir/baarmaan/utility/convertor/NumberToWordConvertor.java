@@ -18,7 +18,7 @@ public class NumberToWordConvertor {
     public static String convertNumberToPersianWord(String number) {
 
         if (StringUtility.isNumber(number))
-            return doNum(new BigDecimal(number), 0);
+            return doNum(new BigDecimal(number), 0).trim();
         else return "";
     }
 

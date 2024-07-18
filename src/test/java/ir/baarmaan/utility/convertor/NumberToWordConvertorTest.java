@@ -6,15 +6,12 @@ import org.slf4j.LoggerFactory;
 
 class NumberToWordConvertorTest {
 
-    Logger LOGGER = LoggerFactory.getLogger(NumberToWordConvertorTest.class.getName());
-
     @Test
     void getCorrectString_convertToPersian(){
 
         String number = "2";
         String expectedResult = "دو";
-        String result = NumberToWordConvertor.convertNumberToPersianWord(number).trim();
-
+        String result = NumberToWordConvertor.convertNumberToPersianWord(number);
         Assertions.assertEquals(expectedResult, result);
     }
 
