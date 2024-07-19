@@ -9,7 +9,8 @@ public class StringUtility {
     public static final String SPACE = " ";
     public static final String EMPTY = "";
 
-    private StringUtility() {}
+    private StringUtility() {
+    }
 
     public static int countChar(String str, char c) {
 
@@ -36,8 +37,8 @@ public class StringUtility {
         }
     }
 
-    public static boolean isBlank(String checkString){
-        if(checkString == null || checkString.isEmpty() || checkString == EMPTY || checkString.length() == 0)
+    public static boolean isBlank(String checkString) {
+        if (checkString == null || checkString.isEmpty() || checkString == EMPTY || checkString.length() == 0)
             return true;
         return false;
     }
@@ -46,13 +47,27 @@ public class StringUtility {
         return Pattern.compile("(?<=[^0-9])(?=[0-9])|(?<=[0-9])(?=[^0-9])").matcher(digitWord).find() ? digitWord.replaceAll("(?<=[^0-9])(?=[0-9])|(?<=[0-9])(?=[^0-9])", SPACE) : digitWord;
     }
 
-    public static String toString(Object object){
+    public static String toString(Object object) {
         return JsonConvertor.object2JsonString(object);
     }
 
-    public static String reverse(String string) {
-        StringBuilder reversed = new StringBuilder(string);
+    public static String reverse(String text) {
+        StringBuilder reversed = new StringBuilder(text);
         return reversed.reverse().toString();
+    }
+
+    public static boolean isPalindrome(String word) {
+
+        int left = 0;
+        int right = word.length() - 1;
+
+        while (left < right) {
+            if (word.charAt(left) != word.charAt(right))
+                return false;
+            left++;
+            right--;
+        }
+        return true;
     }
 
 }
