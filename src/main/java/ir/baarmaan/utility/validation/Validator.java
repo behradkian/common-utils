@@ -5,5 +5,4 @@ public abstract class Validator {
     protected Validator() {
     }
 
-
 }

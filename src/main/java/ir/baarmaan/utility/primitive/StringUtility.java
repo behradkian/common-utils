@@ -6,12 +6,10 @@ import java.util.regex.Pattern;
 
 public class StringUtility {
 
-    private StringUtility() {
-    }
-
     public static final String SPACE = " ";
-
     public static final String EMPTY = "";
+
+    private StringUtility() {}
 
     public static int countChar(String str, char c) {
 
@@ -39,17 +37,22 @@ public class StringUtility {
     }
 
     public static boolean isBlank(String checkString){
-        if(checkString == null || checkString.isEmpty() || checkString == "" || checkString.length() == 0)
+        if(checkString == null || checkString.isEmpty() || checkString == EMPTY || checkString.length() == 0)
             return true;
         return false;
     }
 
     public static String addSpaceBetweenDigitAndWord(String digitWord) {
-        return Pattern.compile("(?<=[^0-9])(?=[0-9])|(?<=[0-9])(?=[^0-9])").matcher(digitWord).find() ? digitWord.replaceAll("(?<=[^0-9])(?=[0-9])|(?<=[0-9])(?=[^0-9])", " ") : digitWord;
+        return Pattern.compile("(?<=[^0-9])(?=[0-9])|(?<=[0-9])(?=[^0-9])").matcher(digitWord).find() ? digitWord.replaceAll("(?<=[^0-9])(?=[0-9])|(?<=[0-9])(?=[^0-9])", SPACE) : digitWord;
     }
 
     public static String toString(Object object){
         return JsonConvertor.object2JsonString(object);
+    }
+
+    public static String reverse(String string) {
+        StringBuilder reversed = new StringBuilder(string);
+        return reversed.reverse().toString();
     }
 
 }
