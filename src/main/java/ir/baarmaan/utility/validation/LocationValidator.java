@@ -3,7 +3,7 @@ package ir.baarmaan.utility.validation;
 import ir.baarmaan.general.exception.unchecked.ValidationException;
 import ir.baarmaan.utility.primitive.StringUtility;
 
-public class LocationValidator extends Validator{
+public class LocationValidator extends Validator {
 
     private LocationValidator() {
     }
