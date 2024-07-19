@@ -8,11 +8,19 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
-public class NumberToWordConvertor {
+public class WordsOfNumberConvertor {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(NumberToWordConvertor.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(WordsOfNumberConvertor.class);
 
-    private NumberToWordConvertor() {
+    private WordsOfNumberConvertor() {
+    }
+
+    public static String convertNumberToPersianWord(BigDecimal number){
+        return convertNumberToPersianWord(number.toString());
+    }
+
+    public static String convertNumberToEnglishWord(BigDecimal number){
+        return convertNumberToEnglishWord(number.toString());
     }
 
     public static String convertNumberToPersianWord(String number) {
