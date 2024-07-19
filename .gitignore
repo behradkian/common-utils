@@ -7,6 +7,8 @@
 # ----
 .idea
 .idea/
+.idea/sonarlint
+.idea/sonarlint/
 .shelf
 /*.iml
 /*.ipr
