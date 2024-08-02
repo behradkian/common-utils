@@ -135,4 +135,11 @@ public class StringUtility {
         return pascalCaseString.toString();
     }
 
+    public static String beforeTrim(String input){
+        if(!isBlank(input)){
+            return input.substring(1);
+        }
+        return "";
+    }
+
 }
