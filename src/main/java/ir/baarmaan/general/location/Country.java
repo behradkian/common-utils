@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Country {
 
-    private String id;
     private String code;
     private String name;
+    private String persian;
 }

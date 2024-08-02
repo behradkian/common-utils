@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 public class LegalPerson extends Person{
 
     private String economicCode;
-    private String nationalId;
+
+
+
 
 }

@@ -16,8 +16,7 @@ import java.util.List;
 public abstract class Person {
 
     private PersonType personType;
-    private City birthCity;
-    private Date birthdate;
+    private String code;
     private List<Address> addresses;
 
 }

@@ -19,8 +19,8 @@ public class AddressDetails {
     private String localityCode;
     private String subLocality;
     private String zone;
-    private String street1;
-    private String street2;
+    private String firstStreet;
+    private String secondStreet;
     private String buildingName;
     private String floorNumber;
     private String sideFloor;

@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class City {
 
-    private String id;
     private String code;
     private String name;
+    private String persian;
     private Country countryDetails;
 }
