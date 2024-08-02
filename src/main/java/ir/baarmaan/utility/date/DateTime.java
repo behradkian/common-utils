@@ -11,7 +11,13 @@ import java.util.TimeZone;
 public class DateTime implements Serializable, Cloneable, Comparable {
 
     private static final long serialVersionUID = 0x164276b556118bb5L;
-    private int year, month, day, hour, minute, second, millisecond;
+    private int year;
+    private int month;
+    private int day;
+    private int hour;
+    private int minute;
+    private int second;
+    private int millisecond;
     private TimeZone timeZone;
 
     public DateTime() {

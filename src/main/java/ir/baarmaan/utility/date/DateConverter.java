@@ -16,10 +16,6 @@ public class DateConverter {
     private DateConverter() {
     }
 
-    private static SimpleDateFormat getSimpleDate(){
-        return new SimpleDateFormat(DEFAULT_DATE_FORMAT);
-    }
-
     public static SimpleDateFormat getSimpleDate(String formatDate) {
         if(StringUtility.isBlank(formatDate))
             return getSimpleDate();
@@ -47,6 +43,11 @@ public class DateConverter {
         persianCalendar.setTime(dateObject);
         return persianCalendar.getPersianShortDate();
     }
+
+    private static SimpleDateFormat getSimpleDate(){
+        return new SimpleDateFormat(DEFAULT_DATE_FORMAT);
+    }
+
 
     public static String convertDateToPersian(String date) throws ParseException {
         return convertDateToPersian(date, DEFAULT_DATE_FORMAT);

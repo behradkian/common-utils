@@ -17,6 +17,10 @@ public class CalendarUtil {
     private CalendarUtil() {
     }
 
+    public static Date currentJalaliDate() {
+        return convertDateTimeToDate(currentJalaliDateTime());
+    }
+
     public static DateTime currentJalaliDateTime() {
         return getDateTime(new JalaliCalendar());
     }
@@ -31,6 +35,11 @@ public class CalendarUtil {
         Date date = jalaliCalendar.getTime();
         return convertDateToDateTime(date);
     }
+
+    public static JalaliCalendar currentJalaliCalendar() {
+        return new JalaliCalendar();
+    }
+
 
     public static String formatToJalaliDate(Date date, String pattern) {
         JalaliCalendar p = new JalaliCalendar(date);
@@ -183,6 +192,7 @@ public class CalendarUtil {
         calendar.add(2, months);
         return calendar.getTime();
     }
+
     public static DateTime parseDateTime(String date) {
         SimpleDateFormat format = new SimpleDateFormat(DEFAULT_DATE_PATTERN);
         try {
@@ -196,20 +206,17 @@ public class CalendarUtil {
                     jalaliCalendar.get(11), jalaliCalendar.get(12),
                     jalaliCalendar.get(13));
         } catch (ParseException e) {
-            throw new DateException("ParseException happened",e);
+            throw new DateException("ParseException happened", e);
         }
     }
 
     public static String currentJalaliDateString() {
-        JalaliCalendar jalaliCalendar = currentJalaliDate();
+        JalaliCalendar jalaliCalendar = currentJalaliCalendar();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DEFAULT_DATE_PATTERN);
         simpleDateFormat.setCalendar(jalaliCalendar);
         return simpleDateFormat.format(jalaliCalendar.getTime());
     }
 
-    public static JalaliCalendar currentJalaliDate() {
-        return new JalaliCalendar();
-    }
 
 
     public static String getSpecificDate(Date specificDate, int day_of_month) {

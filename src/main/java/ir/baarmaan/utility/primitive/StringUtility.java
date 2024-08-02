@@ -70,4 +70,69 @@ public class StringUtility {
         return true;
     }
 
+    public static String toCamelCase(String input) {
+
+        if (input == null || input.isEmpty())
+            return "";
+
+        StringBuilder camelCaseString = new StringBuilder();
+        boolean capitalizeNext = false;
+
+        // Trim the input and convert to lowercase
+        input = input.trim().toLowerCase();
+
+        for (char ch : input.toCharArray()) {
+            if (Character.isWhitespace(ch) || ch == '-' || ch == '_') {
+                capitalizeNext = true;
+            } else {
+                if (capitalizeNext) {
+                    camelCaseString.append(Character.toUpperCase(ch));
+                    capitalizeNext = false;
+                } else {
+                    camelCaseString.append(ch);
+                }
+            }
+        }
+
+        // Convert the first character to lowercase
+        if (camelCaseString.length() > 0)
+            camelCaseString.setCharAt(0, Character.toLowerCase(camelCaseString.charAt(0)));
+
+
+        return camelCaseString.toString();
+    }
+
+    public static String toPascalCase(String input) {
+
+        if (input == null || input.isEmpty())
+            return "";
+
+        StringBuilder pascalCaseString = new StringBuilder();
+        boolean capitalizeNext = true; // Start by capitalizing the first letter
+
+        // Trim the input and convert to lowercase
+        input = input.trim().toLowerCase();
+
+        for (char ch : input.toCharArray()) {
+            if (Character.isWhitespace(ch) || ch == '-' || ch == '_' || !Character.isLetterOrDigit(ch)) {
+                // Skip special characters and set flag to capitalize next valid character
+                capitalizeNext = true;
+            } else {
+                if (capitalizeNext) {
+                    pascalCaseString.append(Character.toUpperCase(ch));
+                    capitalizeNext = false;
+                } else {
+                    pascalCaseString.append(ch);
+                }
+            }
+        }
+
+        // Handle case where entire string is special characters or empty
+        if (pascalCaseString.length() == 0) {
+            return "";
+        }
+
+        return pascalCaseString.toString();
+    }
+
 }

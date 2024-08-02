@@ -1,5 +1,7 @@
 package ir.baarmaan.utility.date;
 
+import ir.baarmaan.general.enumeration.PersianMonthType;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -737,6 +739,22 @@ public class JalaliCalendar extends Calendar {
 
     public int getFirstDayOfWeek() {
         return 7;
+    }
+
+    public int getDay(){
+        return CalendarUtil.getDateTime(this).getDay();
+    }
+
+    public int getMonth(){
+        return CalendarUtil.getDateTime(this).getMonth();
+    }
+
+    public String getMonthName(){
+        return PersianMonthType.getById(CalendarUtil.getDateTime(this).getMonth()).getValue();
+    }
+
+    public int getYear(){
+        return CalendarUtil.getDateTime(this).getYear();
     }
 
 }

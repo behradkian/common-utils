@@ -50,7 +50,7 @@ public class PersianCalendar extends GregorianCalendar {
     }
 
     public String getPersianMonthName() {
-        return PersianCalendarConstants.persianMonthNames[this.persianMonth];
+        return PersianCalendarConstants.PERSIAN_MONTH_NAMES[this.persianMonth];
     }
 
     public int getPersianDay() {
@@ -60,20 +60,20 @@ public class PersianCalendar extends GregorianCalendar {
     public String getPersianWeekDayName() {
         switch(this.get(7)) {
             case 1:
-                return PersianCalendarConstants.persianWeekDays[1];
+                return PersianCalendarConstants.PERSIAN_WEEK_DAYS[1];
             case 2:
-                return PersianCalendarConstants.persianWeekDays[2];
+                return PersianCalendarConstants.PERSIAN_WEEK_DAYS[2];
             case 3:
-                return PersianCalendarConstants.persianWeekDays[3];
+                return PersianCalendarConstants.PERSIAN_WEEK_DAYS[3];
             case 4:
-                return PersianCalendarConstants.persianWeekDays[4];
+                return PersianCalendarConstants.PERSIAN_WEEK_DAYS[4];
             case 5:
-                return PersianCalendarConstants.persianWeekDays[5];
+                return PersianCalendarConstants.PERSIAN_WEEK_DAYS[5];
             case 6:
             default:
-                return PersianCalendarConstants.persianWeekDays[6];
+                return PersianCalendarConstants.PERSIAN_WEEK_DAYS[6];
             case 7:
-                return PersianCalendarConstants.persianWeekDays[0];
+                return PersianCalendarConstants.PERSIAN_WEEK_DAYS[0];
         }
     }
 
