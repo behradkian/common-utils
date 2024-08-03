@@ -5,6 +5,7 @@ import ir.baarmaan.general.dto.net.RestResponseDto;
 import ir.baarmaan.general.enumeration.net.ContentType;
 import ir.baarmaan.general.enumeration.net.Protocols;
 import ir.baarmaan.general.exception.net.RestCallException;
+import jakarta.ws.rs.core.MediaType;
 import org.apache.cxf.jaxrs.client.WebClient;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -13,7 +14,6 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.ws.rs.core.MediaType;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
