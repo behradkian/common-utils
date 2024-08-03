@@ -1,4 +1,4 @@
-package ir.baarmaan.general.person;
+package ir.baarmaan.general.dto.net;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,11 +7,5 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class LegalPerson extends Person{
-
-    private String economicCode;
-
-
-
-
+public class RestRequestDto {
 }

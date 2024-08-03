@@ -8,6 +8,10 @@ public class StringUtility {
 
     public static final String SPACE = " ";
     public static final String EMPTY = "";
+    public static final String DASH = "-";
+    public static final String SLASH = "/";
+    public static final String BACK_SLASH = "\\";
+    public static final String UNDERLINE = "_";
 
     private StringUtility() {
     }
@@ -93,11 +97,9 @@ public class StringUtility {
                 }
             }
         }
-
         // Convert the first character to lowercase
         if (camelCaseString.length() > 0)
             camelCaseString.setCharAt(0, Character.toLowerCase(camelCaseString.charAt(0)));
-
 
         return camelCaseString.toString();
     }

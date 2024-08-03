@@ -1,4 +1,4 @@
-package ir.baarmaan.general.location;
+package ir.baarmaan.general.dto.location;
 
 import ir.baarmaan.general.enumeration.AddressType;
 import lombok.AllArgsConstructor;
