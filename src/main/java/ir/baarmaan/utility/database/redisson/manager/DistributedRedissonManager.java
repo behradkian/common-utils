@@ -1,10 +1,6 @@
 package ir.baarmaan.utility.database.redisson.manager;
 
-import com.tosan.bpms.process.infra.config.BPMSComplexConfigurationKey;
-import com.tosan.bpms.process.infra.config.BPMSConfigurationKey;
-import com.tosan.bpms.process.infra.config.ConfigObserver;
-import com.tosan.bpms.process.infra.config.Configuration;
-import com.tosan.bpms.process.utils.converter.MapperUtil;
+import ir.baarmaan.utility.convertor.JsonConvertor;
 import org.redisson.Redisson;
 import org.redisson.api.RRateLimiter;
 import org.redisson.api.RateIntervalUnit;
@@ -17,7 +13,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class DistributedRedissonManager implements ConfigObserver {
+public class DistributedRedissonManager {
 
     private static RedissonClient redissonClient;
     private static RedissonClientConfiguration redissonClientConfiguration;
@@ -56,10 +52,10 @@ public class DistributedRedissonManager implements ConfigObserver {
     private static void CreatRedissonClientConfiguration() {
         LOGGER.info("start CreatRedissonClientConfiguration");
 
-        String bpmsRedisAddress = Configuration.getInstance().getConfiguration(BPMSConfigurationKey.BPMS_REDIS_ADDRESS);
-        String bpmsRedisUserName = Configuration.getInstance().getConfiguration(BPMSConfigurationKey.BPMS_REDIS_USERNAME);
-        String bpmsRedisDataBaseId = Configuration.getInstance().getConfiguration(BPMSConfigurationKey.BPMS_REDIS_DATABASEID);
-        String bpmsRedisPassword = Configuration.getInstance().getConfiguration(BPMSConfigurationKey.BPMS_REDIS_PASSWORD);
+        String bpmsRedisAddress = "";
+        String bpmsRedisUserName = "";
+        String bpmsRedisDataBaseId = "";
+        String bpmsRedisPassword = "";
 
 
         if (bpmsRedisAddress != null && !bpmsRedisAddress.isEmpty() &&
@@ -71,9 +67,9 @@ public class DistributedRedissonManager implements ConfigObserver {
             redissonClientConfiguration.setAddress(bpmsRedisAddress);
             redissonClientConfiguration.setUserName(bpmsRedisUserName);
             redissonClientConfiguration.setPassword(bpmsRedisPassword);
-            redissonClientConfiguration.setDataBaseId(Integer.parseInt(Configuration.getInstance().getConfiguration(BPMSConfigurationKey.BPMS_REDIS_DATABASEID)));
-            redissonClientConfiguration.setExpirationTime(Long.parseLong(Configuration.getInstance().getConfiguration(BPMSConfigurationKey.BPMS_REDIS_TTL_OBJECT)));
-            redissonClientConfiguration.setDefaultCacheName(Configuration.getInstance().getConfiguration(BPMSConfigurationKey.BPMS_REDIS_CACHENAME));
+            redissonClientConfiguration.setDataBaseId(Integer.parseInt(""));
+            redissonClientConfiguration.setExpirationTime(Long.parseLong(""));
+            redissonClientConfiguration.setDefaultCacheName("");
         }
 
         LOGGER.info("end CreatRedissonClientConfiguration with {}", redissonClientConfiguration);
@@ -81,10 +77,10 @@ public class DistributedRedissonManager implements ConfigObserver {
 
     private static void initRateLimits() throws IOException {
         LOGGER.info("start CreatRedissonClientConfiguration");
-        String rateLimitConfigurations = Configuration.getInstance().getComplexConfiguration(BPMSComplexConfigurationKey.BPMS_REDIS_ALL_RATE_LIMIT);
+        String rateLimitConfigurations = "";
         if (redissonClient != null && rateLimitConfigurations != null && !rateLimitConfigurations.isEmpty()) {
             LOGGER.info("going to create  rate limits");
-            RateLimiterConfiguration[] rateLimiterConfigurations = MapperUtil.getObject(rateLimitConfigurations, RateLimiterConfiguration[].class);
+            RateLimiterConfiguration[] rateLimiterConfigurations = JsonConvertor.jsonString2Object(rateLimitConfigurations, RateLimiterConfiguration[].class);
             if (rateLimiterConfigurations != null) {
                 for (RateLimiterConfiguration limiterConfiguration : rateLimiterConfigurations) {
                     initSingleRateLimit(limiterConfiguration);
@@ -151,7 +147,6 @@ public class DistributedRedissonManager implements ConfigObserver {
         return limiterHashMap;
     }
 
-    @Override
     public void reset() {
         distributedRedissonCacheManagerInit();
     }

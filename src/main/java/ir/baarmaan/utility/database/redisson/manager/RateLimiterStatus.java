@@ -1,8 +1,7 @@
 package ir.baarmaan.utility.database.redisson.manager;
 
-import com.tosan.bpms.process.infra.enumeration.EnumValue;
 
-public enum RateLimiterStatus implements EnumValue<Integer> {
+public enum RateLimiterStatus {
     ENABLE (1),
     DISABLE (0);
 
@@ -12,7 +11,6 @@ public enum RateLimiterStatus implements EnumValue<Integer> {
         this.code = code;
     }
 
-    @Override
     public Integer getValue() {
         return code;
     }

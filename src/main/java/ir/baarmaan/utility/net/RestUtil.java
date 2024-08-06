@@ -1,6 +1,5 @@
 package ir.baarmaan.utility.net;
 
-import com.sun.deploy.net.HttpResponse;
 import ir.baarmaan.general.dto.net.RestResponseDto;
 import ir.baarmaan.general.enumeration.net.ContentType;
 import ir.baarmaan.general.enumeration.net.Protocols;
@@ -238,7 +237,7 @@ public class RestUtil {
         HttpClient client = HttpClientBuilder.create().build();
         HttpUriRequest httpUriRequest = new HttpGet("URL");
 
-        HttpResponse response = (HttpResponse) client.execute(httpUriRequest);
+       // HttpResponse response = (HttpResponse) client.execute(httpUriRequest);
     }
 
     private static String callServiceForGetToken(String url, String scope) throws IOException {
