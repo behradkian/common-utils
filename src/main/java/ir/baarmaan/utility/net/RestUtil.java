@@ -18,7 +18,10 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
+
+import static ir.baarmaan.utility.net.Constant.*;
 
 /**
  * this class is utils use for calling rest service.
@@ -149,7 +152,7 @@ public class RestUtil {
         return null;
     }
 
-    public void io(){
+    public void io() {
 
         try {
 
@@ -186,7 +189,7 @@ public class RestUtil {
 
     }
 
-    public void post(){
+    public void post() {
 
         try {
 
@@ -236,6 +239,138 @@ public class RestUtil {
         HttpUriRequest httpUriRequest = new HttpGet("URL");
 
         HttpResponse response = (HttpResponse) client.execute(httpUriRequest);
+    }
+
+    private static String callServiceForGetToken(String url, String scope) throws IOException {
+
+        String note;
+        String result;
+        URL requestURL = new URL(url);
+        HttpURLConnection httpURLConnection = (HttpURLConnection) requestURL.openConnection();
+
+        httpURLConnection.setRequestMethod("POST");
+        httpURLConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+
+        String body = "scope=" + scope + "&grant_type=client_credentials";
+        byte[] byteBody = body.getBytes(StandardCharsets.UTF_8);
+        httpURLConnection.setRequestProperty("Content-Length", Integer.toString(byteBody.length));
+        httpURLConnection.setRequestProperty(CHARSET, UTF8);
+        httpURLConnection.setRequestProperty(AUTH, BASIC + "");
+        httpURLConnection.setUseCaches(false);
+        httpURLConnection.setDoInput(true);
+        httpURLConnection.setDoOutput(true);
+
+        try (DataOutputStream dataOutputStream = new DataOutputStream(httpURLConnection.getOutputStream())) {
+
+            dataOutputStream.write(byteBody);
+
+            try (BufferedReader br = new BufferedReader(new InputStreamReader((httpURLConnection.getInputStream()), UTF8))) {
+
+                StringBuilder response = new StringBuilder();
+                String responseLine = null;
+
+                while ((responseLine = br.readLine()) != null) {
+                    response.append(responseLine.trim());
+                }
+                result = response.toString();
+            }
+            return result;
+
+        } catch (Exception e) {
+
+            note = String.format("in InquiryService.callServiceForGetToken() : %s", e.getMessage());
+            LOGGER.error(note);
+            throw new RuntimeException(note);
+
+        } finally {
+            httpURLConnection.disconnect();
+        }
+
+    }
+
+    private static String callGetServiceByBearerToken(String url, String token) throws IOException {
+
+        String note;
+        String result;
+        URL requestURL = new URL(url);
+        HttpURLConnection httpURLConnection = (HttpURLConnection) requestURL.openConnection();
+
+        httpURLConnection.setRequestMethod("GET");
+        httpURLConnection.setRequestProperty(CHARSET, UTF8);
+        httpURLConnection.setRequestProperty(AUTH, BEARER + token);
+        httpURLConnection.setUseCaches(false);
+        httpURLConnection.setDoInput(true);
+        httpURLConnection.setDoOutput(true);
+
+
+        try (BufferedReader br = new BufferedReader(new InputStreamReader((httpURLConnection.getInputStream()), UTF8))) {
+
+            StringBuilder response = new StringBuilder();
+            String responseLine = null;
+
+            while ((responseLine = br.readLine()) != null) {
+                response.append(responseLine.trim());
+            }
+            result = response.toString();
+
+            return result;
+
+        } catch (Exception e) {
+
+            note = String.format("in InquiryService.callGetServiceByBearerToken() : %s", e.getMessage());
+            LOGGER.error(note);
+            throw new RuntimeException(note);
+
+        } finally {
+            httpURLConnection.disconnect();
+        }
+
+    }
+
+    private static String callPostServiceByBearerToken(String url, String token, String body) throws IOException {
+
+        String note;
+        String result;
+        URL requestURL = new URL(url);
+        HttpURLConnection httpURLConnection = (HttpURLConnection) requestURL.openConnection();
+
+        httpURLConnection.setRequestMethod("POST");
+        httpURLConnection.setRequestProperty("Content-Type", "application/json");
+        httpURLConnection.setRequestProperty(CHARSET, UTF8);
+        httpURLConnection.setRequestProperty(AUTH, BEARER + token);
+        httpURLConnection.setUseCaches(false);
+        httpURLConnection.setDoInput(true);
+        httpURLConnection.setDoOutput(true);
+
+
+        try (DataOutputStream wr = new DataOutputStream(httpURLConnection.getOutputStream())) {
+
+            byte[] byteBody = body.getBytes(StandardCharsets.UTF_8);
+            wr.write(byteBody);
+
+            try (BufferedReader br = new BufferedReader(new InputStreamReader((httpURLConnection.getInputStream()), UTF8))) {
+
+                StringBuilder response = new StringBuilder();
+                String responseLine = null;
+
+                while ((responseLine = br.readLine()) != null) {
+                    response.append(responseLine.trim());
+                }
+                result = response.toString();
+            }
+
+            return result;
+
+        } catch (Exception e) {
+
+            note = String.format("in InquiryService.callPostServiceByBearerToken() : %s", e.getMessage());
+            LOGGER.error(note);
+            throw new RuntimeException(note);
+
+        } finally {
+            httpURLConnection.disconnect();
+        }
+
     }
 
 }

@@ -2,6 +2,8 @@ package ir.baarmaan.utility.primitive;
 
 import ir.baarmaan.utility.convertor.JsonConvertor;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.regex.Pattern;
 
 public class StringUtility {
@@ -137,11 +139,36 @@ public class StringUtility {
         return pascalCaseString.toString();
     }
 
-    public static String beforeTrim(String input){
-        if(!isBlank(input)){
+    public static String beforeTrim(String input) {
+        if (!isBlank(input)) {
             return input.substring(1);
         }
         return "";
+    }
+
+    private static String arabicToDecimal(String number) {
+
+        char[] chars = new char[number.length()];
+        for (int i = 0; i < number.length(); i++) {
+            char ch = number.charAt(i);
+            if (ch >= 0x0660 && ch <= 0x0669)
+                ch -= 0x0660 - '0';
+            else if (ch >= 0x06f0 && ch <= 0x06F9)
+                ch -= 0x06f0 - '0';
+            chars[i] = ch;
+        }
+        return new String(chars);
+    }
+
+    public static String convertArabicToNumber(String data) {
+        String decoded = "";
+        try {
+            Base64.Decoder decoder = Base64.getDecoder();
+            decoded = new String(decoder.decode(data), StandardCharsets.UTF_8);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return arabicToDecimal(decoded);
     }
 
 }
