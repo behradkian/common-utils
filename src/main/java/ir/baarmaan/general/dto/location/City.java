@@ -11,6 +11,5 @@ public class City {
 
     private String code;
     private String name;
-    private String persian;
     private Country countryDetails;
 }
