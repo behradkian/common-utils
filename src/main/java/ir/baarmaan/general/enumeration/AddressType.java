@@ -10,10 +10,10 @@ import java.util.Arrays;
 
 @Getter
 @AllArgsConstructor
-@JsonFormat(with = JsonFormat.Feature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
 public enum AddressType implements Serializable {
 
-    HOME(1), WORK(2);
+    HOME(1),
+    WORK(2);
 
     private final Integer id;
 
