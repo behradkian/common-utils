@@ -26,7 +26,7 @@ public class IranianValidator extends Validator {
 
         if (StringUtility.isBlank(postalCode))
             throw new ValidationException("postalCode is null");
-        return postalCode.matches(IRANIAN_POSTAL_CODE_ALGORITHM);
+        return postalCode.matches(IRANIAN_POSTAL_CODE_REGEX);
     }
 
     /**
