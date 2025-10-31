@@ -1,4 +1,4 @@
-package ir.radman.common.util.net;
+package ir.radman.common.tool.net;
 
 import org.apache.cxf.configuration.jsse.TLSClientParameters;
 import org.apache.cxf.jaxrs.client.WebClient;

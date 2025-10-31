@@ -1,4 +1,4 @@
-package ir.radman.common.general.enumeration.net;
+package ir.radman.common.general.enumeration.rest;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;

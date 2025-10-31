@@ -1,4 +1,4 @@
-package ir.radman.common.general.redisson;
+package ir.radman.common.tool.redis;
 
 public class RedissonLockInfo {
     private String lockItem;

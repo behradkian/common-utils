@@ -1,4 +1,4 @@
-package ir.radman.common.general.redisson.manager;
+package ir.radman.common.tool.redis.manager;
 
 import ir.radman.common.util.convertor.JsonConvertor;
 import org.redisson.Redisson;

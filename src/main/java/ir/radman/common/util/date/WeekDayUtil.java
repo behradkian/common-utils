@@ -1,6 +1,6 @@
 package ir.radman.common.util.date;
 
-import ir.radman.common.general.enumeration.DayOfWeek;
+import ir.radman.common.general.enumeration.date.DayOfWeek;
 import ir.radman.common.util.primitive.StringUtility;
 
 import java.time.LocalDate;

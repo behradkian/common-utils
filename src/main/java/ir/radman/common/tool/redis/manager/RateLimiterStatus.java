@@ -1,4 +1,4 @@
-package ir.radman.common.general.redisson.manager;
+package ir.radman.common.tool.redis.manager;
 
 public enum RateLimiterStatus {
     ENABLE (1),

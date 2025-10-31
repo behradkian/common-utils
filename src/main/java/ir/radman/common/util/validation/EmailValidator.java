@@ -3,10 +3,11 @@ package ir.radman.common.util.validation;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * @author : Pedram Behradkian
+ * @date : 2025/10/31
+ */
 public class EmailValidator extends Validator {
-
-    public static final String EMAIL_ADDRESS_REGEX = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
-    private static final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(EMAIL_ADDRESS_REGEX, Pattern.CASE_INSENSITIVE);
 
     private EmailValidator() {
     }

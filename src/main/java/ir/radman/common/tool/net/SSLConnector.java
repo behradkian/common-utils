@@ -1,4 +1,4 @@
-package ir.radman.common.util.net;
+package ir.radman.common.tool.net;
 
 import org.apache.cxf.transport.http.HTTPConduit;
 import org.slf4j.Logger;

@@ -1,6 +1,6 @@
 package ir.radman.common.util.date;
 
-import ir.radman.common.general.enumeration.PersianMonthType;
+import ir.radman.common.general.enumeration.date.PersianMonthType;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

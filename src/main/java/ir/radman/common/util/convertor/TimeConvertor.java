@@ -1,6 +1,6 @@
 package ir.radman.common.util.convertor;
 
-import ir.radman.common.general.enumeration.TimeUnit;
+import ir.radman.common.general.enumeration.date.TimeUnit;
 
 public class TimeConvertor {
 

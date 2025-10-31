@@ -1,4 +1,4 @@
-package ir.radman.common.util.net;
+package ir.radman.common.tool.net;
 
 public class Constant {
     public static String HEADER_JAXB = "set-jaxb-validation-event-handler";

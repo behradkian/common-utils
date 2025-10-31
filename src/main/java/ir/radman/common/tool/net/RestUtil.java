@@ -1,8 +1,8 @@
-package ir.radman.common.util.net;
+package ir.radman.common.tool.net;
 
 import ir.radman.common.general.dto.net.RestResponseDto;
-import ir.radman.common.general.enumeration.net.ContentType;
-import ir.radman.common.general.enumeration.net.Protocols;
+import ir.radman.common.general.enumeration.rest.ContentType;
+import ir.radman.common.general.enumeration.rest.SecurityProtocol;
 import ir.radman.common.general.exception.net.RestCallException;
 import jakarta.ws.rs.core.MediaType;
 import org.apache.cxf.jaxrs.client.WebClient;
@@ -20,7 +20,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
-import static ir.radman.common.util.net.Constant.*;
+import static ir.radman.common.tool.net.Constant.*;
 
 /**
  * this class is utils use for calling rest service.
@@ -35,12 +35,12 @@ public class RestUtil {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RestUtil.class);
 
-    public RestResponseDto postJsonService(String url, String input, Map<String, String> headers, Protocols protocol, String certificateFilePath, String certificatePassword) throws IOException {
+    public RestResponseDto postJsonService(String url, String input, Map<String, String> headers, SecurityProtocol protocol, String certificateFilePath, String certificatePassword) throws IOException {
         LOGGER.debug("function postJsonService in class RestUtil is started with parameters url: {} , input: {} , header: {}", url, input, headers);
         WebClient webClient = createWebClient(url);
         webClient.accept(MediaType.APPLICATION_JSON);
         webClient.type(ContentType.APPLICATION_JSON.getValue());
-        if (protocol != null && protocol == Protocols.HTTPS)
+        if (protocol != null && protocol == SecurityProtocol.HTTPS)
             webClient = setCertificate(webClient, certificateFilePath, certificatePassword);
         setHeaders(webClient, headers);
         LOGGER.debug("going to call service with post method");
@@ -49,11 +49,11 @@ public class RestUtil {
         return readResponseService(response);
     }
 
-    public RestResponseDto getJsonService(String url, Map<String, String> headers, Map<String, String> params, Protocols protocol, String certificateFilePath, String certificatePassword) throws IOException {
+    public RestResponseDto getJsonService(String url, Map<String, String> headers, Map<String, String> params, SecurityProtocol protocol, String certificateFilePath, String certificatePassword) throws IOException {
         LOGGER.debug("function getJsonService in class RestUtil is started with parameters url: {} , header: {}", url, headers);
         WebClient webClient = createWebClient(url);
         webClient.type(ContentType.APPLICATION_JSON.getValue());
-        if (protocol != null && protocol == Protocols.HTTPS)
+        if (protocol != null && protocol == SecurityProtocol.HTTPS)
             webClient = setCertificate(webClient, certificateFilePath, certificatePassword);
         setHeaders(webClient, headers);
         setQueryParam(webClient, params);
@@ -64,16 +64,16 @@ public class RestUtil {
         return responseUtil;
     }
 
-    public RestResponseDto getJsonService(String url, Map<String, String> headers, Protocols protocol, String certificateFilePath, String certificatePassword) throws IOException {
+    public RestResponseDto getJsonService(String url, Map<String, String> headers, SecurityProtocol protocol, String certificateFilePath, String certificatePassword) throws IOException {
         return getJsonService(url, headers, null, protocol, certificateFilePath, certificatePassword);
     }
 
 
-    public RestResponseDto postFormService(String url, Map<String, String> input, Map<String, String> headers, Protocols protocol, String certificateFilePath, String certificatePassword) throws IOException {
+    public RestResponseDto postFormService(String url, Map<String, String> input, Map<String, String> headers, SecurityProtocol protocol, String certificateFilePath, String certificatePassword) throws IOException {
         LOGGER.debug("function postFormService in class RestUtil is started with parameters url: {} , input: {} , header: {}", url, input, headers);
         WebClient webClient = createWebClient(url);
         webClient.type(ContentType.APPLICATION_X_WWW_FORM_URLENCODED.getValue());
-        if (protocol != null && protocol == Protocols.HTTPS)
+        if (protocol != null && protocol == SecurityProtocol.HTTPS)
             webClient = setCertificate(webClient, certificateFilePath, certificatePassword);
         setHeaders(webClient, headers);
         jakarta.ws.rs.core.Form form = new jakarta.ws.rs.core.Form();
@@ -147,7 +147,7 @@ public class RestUtil {
         return responseUtil;
     }
 
-    private RestResponseDto callGetService(String url, String contentType, Object input, Map<String, String> headers, Protocols protocol) {
+    private RestResponseDto callGetService(String url, String contentType, Object input, Map<String, String> headers, SecurityProtocol protocol) {
         return null;
     }
 

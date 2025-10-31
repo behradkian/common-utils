@@ -1,6 +1,6 @@
-package ir.radman.common.general.enumeration.net;
+package ir.radman.common.general.enumeration.rest;
 
-public enum Methods {
+public enum RestMethodType {
 
     GET("GET"),
     /**
@@ -26,7 +26,7 @@ public enum Methods {
 
     private final String value;
 
-    Methods(String value) {
+    RestMethodType(String value) {
         this.value = value;
     }
 
