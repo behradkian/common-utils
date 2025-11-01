@@ -1,45 +1,40 @@
 package ir.radman.common.util.validation;
 
-import ir.radman.common.general.exception.unchecked.ValidationException;
 import ir.radman.common.util.primitive.StringUtility;
 
 /**
  * @author : Pedram Behradkian
  * @date : 2025/10/31
  */
-public class IranianValidator extends Validator {
+public final class IranianValidator {
 
+    private static final String IRANIAN_MOBILE_NUMBER_REGEX = "^(09\\d{9}|\\+989\\d{9})$";
+    private static final String IRANIAN_POSTAL_CODE_REGEX = "^[13-9]{4}[1346-9][1-9](([0-9]{3}[1-9])|([1-9][0-9]{3})|([0-9][1-9][0-9]{2})|([0-9]{2}[1-9][0-9]))$";
+    private static final String TEN_DIGIT_REGEX = "\\d{10}";
+    private static final String ELEVEN_DIGIT_REGEX = "\\d{11}";
 
-    /**
-     * mobile phone is a unique number foe calling a person => structure : 09XXXXXXXXX (X is different numbers)
-     */
-    public static boolean isIranianMobileNumberValid(String mobileNumber) {
-        if (StringUtility.isBlank(mobileNumber))
-            throw new ValidationException("mobileNumber is null");
-        return mobileNumber.matches("^09[0|123][0-9]{8}$") || mobileNumber.matches("^\\+989[0|123][0-9]{8}$");
+    private IranianValidator() {
+        throw new AssertionError("Utility class should not be instantiated");
     }
 
-    /**
-     * postalCode is a unique number for find address
-     */
-    public static boolean isIranianPostalCodeValid(String postalCode) {
+    public static boolean isMobileNumberValid(String mobileNumber) {
+        if (StringUtility.isBlank(mobileNumber)){
+            return false;
+        }
+        return mobileNumber.matches(IRANIAN_MOBILE_NUMBER_REGEX);
+    }
 
-        if (StringUtility.isBlank(postalCode))
-            throw new ValidationException("postalCode is null");
+    public static boolean isPostalCodeValid(String postalCode) {
+        if (StringUtility.isBlank(postalCode)){
+            return false;
+        }
         return postalCode.matches(IRANIAN_POSTAL_CODE_REGEX);
     }
 
-    /**
-     * nationalCode is public number for identification of iranian citizens (is on the MelliCards)
-     */
-    public static boolean isIranianNationalCodeValid(String nationalCode) {
-
-        if (StringUtility.isBlank(nationalCode))
-            throw new ValidationException("nationalCode is null");
-
-        if (!nationalCode.matches("^[0-9]{10}$"))
+    public static boolean isNationalCodeValid(String nationalCode) {
+        if (StringUtility.isBlank(nationalCode) || !nationalCode.matches(TEN_DIGIT_REGEX) || nationalCode.chars().distinct().count() == 1) {
             return false;
-
+        }
         char[] nationalCodeCharsArray = nationalCode.toCharArray();
         int sum = 0;
         for (int i = 0; i < 9; i++) {
@@ -57,14 +52,24 @@ public class IranianValidator extends Validator {
             return false;
     }
 
-    /**
-     * nationalSerial is a collections of numbers and a letter in back of MelliCard for some inquiries (like civil registration with photo)
-     */
-    public static boolean isIranianNationalSerialValid(String nationalSerial) {
+    public static boolean isCorporateCodeValid(String corporateNationalCode) {
+        if (StringUtility.isBlank(corporateNationalCode) || !corporateNationalCode.matches(ELEVEN_DIGIT_REGEX)) {
+            return false;
+        }
+        int[] coefficients = {29, 27, 23, 19, 17, 29, 27, 23, 19, 17};
+        int baseDigit = corporateNationalCode.charAt(9) - '0';
+        int checkDigit = corporateNationalCode.charAt(10) - '0';
+        int sum = 0;
 
-        if (StringUtility.isBlank(nationalSerial))
-            throw new ValidationException("nationalSerial is null");
-        return nationalSerial.matches("^[0-9]{9}$") || nationalSerial.matches("^[0-9]{1}[A-Z]{1}[0-9]{8}$");
+        for (int i = 0; i < 10; i++) {
+            int digit = corporateNationalCode.charAt(i) - '0';
+            sum += coefficients[i] * (digit + baseDigit + 2);
+        }
+        int calculated = sum % 11;
+        if (calculated == 10) {
+            calculated = 0;
+        }
+        return calculated == checkDigit;
     }
 
 }
