@@ -6,7 +6,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.regex.Pattern;
 
-public class StringUtility {
+public final class StringUtility {
 
     public static final String SPACE = " ";
     public static final String EMPTY = "";
@@ -18,14 +18,13 @@ public class StringUtility {
     private StringUtility() {
     }
 
-    public static int countChar(String str, char c) {
-
+    public static int countChar(String text, char c) {
         int count = 0;
-
-        for (int i = 0; i < str.length(); i++)
-            if (str.charAt(i) == c)
+        for (int i = 0; i < text.length(); i++) {
+            if (text.charAt(i) == c) {
                 count++;
-
+            }
+        }
         return count;
     }
 
@@ -84,7 +83,6 @@ public class StringUtility {
         StringBuilder camelCaseString = new StringBuilder();
         boolean capitalizeNext = false;
 
-        // Trim the input and convert to lowercase
         input = input.trim().toLowerCase();
 
         for (char ch : input.toCharArray()) {
@@ -100,7 +98,7 @@ public class StringUtility {
             }
         }
         // Convert the first character to lowercase
-        if (camelCaseString.length() > 0)
+        if (!camelCaseString.isEmpty())
             camelCaseString.setCharAt(0, Character.toLowerCase(camelCaseString.charAt(0)));
 
         return camelCaseString.toString();
@@ -132,7 +130,7 @@ public class StringUtility {
         }
 
         // Handle case where entire string is special characters or empty
-        if (pascalCaseString.length() == 0) {
+        if (pascalCaseString.isEmpty()) {
             return "";
         }
 
@@ -165,8 +163,7 @@ public class StringUtility {
         try {
             Base64.Decoder decoder = Base64.getDecoder();
             decoded = new String(decoder.decode(data), StandardCharsets.UTF_8);
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ignored) {
         }
         return arabicToDecimal(decoded);
     }
