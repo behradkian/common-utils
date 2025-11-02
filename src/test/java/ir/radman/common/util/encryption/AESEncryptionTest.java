@@ -1,4 +1,4 @@
-package ir.radman.utility.encryption;
+package ir.radman.common.util.encryption;
 
 import ir.radman.common.util.encription.AESEncryption;
 import org.junit.jupiter.api.Assertions;

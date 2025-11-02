@@ -9,7 +9,7 @@ import java.security.MessageDigest;
 
 public class HashGenerator {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(HashGenerator.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(HashGenerator.class);
     private static final String MDF = "MD5";
     private static final String SHA256 = "SHA-256";
     private static final String SHA1 = "SHA-1";
@@ -32,7 +32,7 @@ public class HashGenerator {
             return hashText;
 
         } catch (Exception e) {
-            LOGGER.error("exception occurred in generateToMD5, exceptionType is : " + e.getClass().getSimpleName() + ", exceptionMessage is : " + e.getMessage());
+            LOGGER.error("exception occurred in generateToMD5, exceptionType is : {}, exceptionMessage is : {}", e.getClass().getSimpleName(), e.getMessage());
         }
         return null;
 
@@ -48,7 +48,7 @@ public class HashGenerator {
             return new BigInteger(1, messageDigest.digest()).toString(16);
 
         } catch (Exception e) {
-            LOGGER.error("exception occurred in generateToSHA1, exceptionType is : " + e.getClass().getSimpleName() + ", exceptionMessage is : " + e.getMessage());
+            LOGGER.error("exception occurred in generateToSHA1, exceptionType is : {}, exceptionMessage is : {}", e.getClass().getSimpleName(), e.getMessage());
         }
         return null;
     }
@@ -68,7 +68,7 @@ public class HashGenerator {
             }
             return hexString.toString();
         } catch (Exception e) {
-            LOGGER.error("exception occurred in generateToSHA256, exceptionType is : " + e.getClass().getSimpleName() + ", exceptionMessage is : " + e.getMessage());
+            LOGGER.error("exception occurred in generateToSHA256, exceptionType is : {}, exceptionMessage is : {}", e.getClass().getSimpleName(), e.getMessage());
         }
         return null;
     }

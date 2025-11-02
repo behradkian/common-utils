@@ -1,6 +1,6 @@
 package ir.radman.common.util.date;
 
-import ir.radman.common.util.primitive.StringUtility;
+import ir.radman.common.util.string.StringUtility;
 import org.apache.commons.lang3.StringUtils;
 
 import java.text.ParseException;

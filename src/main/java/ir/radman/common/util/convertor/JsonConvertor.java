@@ -26,7 +26,7 @@ public class JsonConvertor {
         try {
             return new ObjectMapper().writeValueAsString(object);
         } catch (JsonProcessingException e) {
-            logger.error(String.format("an error occurred when class mapped to stringJson. exceptionType is : %s, message is : %s", e.getClass().getSimpleName(), e.getMessage()));
+            logger.error("an error occurred when class mapped to stringJson. exceptionType is : {}, message is : {}", e.getClass().getSimpleName(), e.getMessage());
         }
         return null;
     }

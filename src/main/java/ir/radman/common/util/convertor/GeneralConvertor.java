@@ -1,13 +1,13 @@
 package ir.radman.common.util.convertor;
 
 import ir.radman.common.general.exception.unchecked.NetworkRuntimeException;
-import ir.radman.common.util.primitive.StringUtility;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
+import ir.radman.common.util.string.StringUtility;
 import org.apache.commons.codec.binary.Base64;
 
 public class GeneralConvertor {

@@ -1,14 +1,12 @@
 package ir.radman.common.util.validation;
 
-import ir.radman.common.util.primitive.StringUtility;
+import ir.radman.common.util.string.StringUtility;
 
 /**
  * @author : Pedram Behradkian
  * @date : 2025/10/31
  */
 public final class EmailValidator {
-
-    private static final String EMAIL_ADDRESS_REGEX = "^(?=.{1,64}@)[A-Za-z0-9._%+-]+(\\.[A-Za-z0-9._%+-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
 
     private EmailValidator() {
         throw new AssertionError("Utility class should not be instantiated");
@@ -18,7 +16,7 @@ public final class EmailValidator {
         if (StringUtility.isBlank(emailAddress)) {
             return false;
         }
-        return emailAddress.matches(EMAIL_ADDRESS_REGEX);
+        return emailAddress.matches("^(?=.{1,64}@)[A-Za-z0-9._%+-]+(\\.[A-Za-z0-9._%+-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$");
     }
 
 }

@@ -1,6 +1,6 @@
 package ir.radman.common.util.convertor;
 
-import ir.radman.common.util.primitive.StringUtility;
+import ir.radman.common.util.string.StringUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

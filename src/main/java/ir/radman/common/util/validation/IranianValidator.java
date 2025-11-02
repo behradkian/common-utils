@@ -1,17 +1,12 @@
 package ir.radman.common.util.validation;
 
-import ir.radman.common.util.primitive.StringUtility;
+import ir.radman.common.util.string.StringUtility;
 
 /**
  * @author : Pedram Behradkian
  * @date : 2025/10/31
  */
 public final class IranianValidator {
-
-    private static final String IRANIAN_MOBILE_NUMBER_REGEX = "^(09\\d{9}|\\+989\\d{9})$";
-    private static final String IRANIAN_POSTAL_CODE_REGEX = "^[13-9]{4}[1346-9][1-9](([0-9]{3}[1-9])|([1-9][0-9]{3})|([0-9][1-9][0-9]{2})|([0-9]{2}[1-9][0-9]))$";
-    private static final String TEN_DIGIT_REGEX = "\\d{10}";
-    private static final String ELEVEN_DIGIT_REGEX = "\\d{11}";
 
     private IranianValidator() {
         throw new AssertionError("Utility class should not be instantiated");
@@ -21,18 +16,18 @@ public final class IranianValidator {
         if (StringUtility.isBlank(mobileNumber)){
             return false;
         }
-        return mobileNumber.matches(IRANIAN_MOBILE_NUMBER_REGEX);
+        return mobileNumber.matches("^(09\\d{9}|\\+989\\d{9})$");
     }
 
     public static boolean isPostalCodeValid(String postalCode) {
         if (StringUtility.isBlank(postalCode)){
             return false;
         }
-        return postalCode.matches(IRANIAN_POSTAL_CODE_REGEX);
+        return postalCode.matches("^[13-9]{4}[1346-9][1-9](([0-9]{3}[1-9])|([1-9][0-9]{3})|([0-9][1-9][0-9]{2})|([0-9]{2}[1-9][0-9]))$");
     }
 
     public static boolean isNationalCodeValid(String nationalCode) {
-        if (StringUtility.isBlank(nationalCode) || !nationalCode.matches(TEN_DIGIT_REGEX) || nationalCode.chars().distinct().count() == 1) {
+        if (StringUtility.isBlank(nationalCode) || !nationalCode.matches("\\d{10}") || nationalCode.chars().distinct().count() == 1) {
             return false;
         }
         char[] nationalCodeCharsArray = nationalCode.toCharArray();
@@ -46,14 +41,11 @@ public final class IranianValidator {
 
         if (mod > 1 && (11 - mod) == checkDigit)
             return true;
-        else if (mod < 2 && mod == checkDigit)
-            return true;
-        else
-            return false;
+        else return mod < 2 && mod == checkDigit;
     }
 
     public static boolean isCorporateCodeValid(String corporateNationalCode) {
-        if (StringUtility.isBlank(corporateNationalCode) || !corporateNationalCode.matches(ELEVEN_DIGIT_REGEX)) {
+        if (StringUtility.isBlank(corporateNationalCode) || !corporateNationalCode.matches("\\d{11}")) {
             return false;
         }
         int[] coefficients = {29, 27, 23, 19, 17, 29, 27, 23, 19, 17};

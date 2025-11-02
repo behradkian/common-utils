@@ -1,6 +1,6 @@
 package ir.radman.common.general.exception;
 
-import ir.radman.common.util.primitive.StringUtility;
+import ir.radman.common.util.string.StringUtility;
 import lombok.Getter;
 
 import java.io.Serial;
@@ -26,7 +26,6 @@ public abstract class RadmanRuntimeException extends RuntimeException implements
     private final String errorCode; // logical error code (e.g. "USER_NOT_FOUND")
     private final Map<String, Object> params; // additional metadata
     private final Instant timestamp;
-
 
     public RadmanRuntimeException(String message) {
         super(message);
@@ -110,6 +109,6 @@ public abstract class RadmanRuntimeException extends RuntimeException implements
 
     @Override
     public String toString() {
-        return StringUtility.toString(this);
+        return StringUtility.toJsonString(this);
     }
 }

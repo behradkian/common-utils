@@ -1,7 +1,7 @@
 package ir.radman.common.util.convertor;
 
 import ir.radman.common.general.exception.unchecked.InvalidTemperatureException;
-import ir.radman.common.util.primitive.StringUtility;
+import ir.radman.common.util.string.StringUtility;
 
 public class TemperatureConvertor {
 
@@ -16,7 +16,7 @@ public class TemperatureConvertor {
         if (!StringUtility.isNumber(FahrenheitTemp))
             throw new InvalidTemperatureException("Temperature is invalid");
 
-        return String.format("%.5f", convertFahrenheitToCelsius(Double.valueOf(FahrenheitTemp)));
+        return String.format("%.5f", convertFahrenheitToCelsius(Double.parseDouble(FahrenheitTemp)));
     }
 
     public static double convertCelsiusToFahrenheit(double celsiusTemp) {
@@ -26,7 +26,7 @@ public class TemperatureConvertor {
     public static String convertCelsiusToFahrenheit(String celsiusTemp) {
         if (!StringUtility.isNumber(celsiusTemp))
             throw new InvalidTemperatureException("Temperature is invalid");
-        return String.format("%.5f", convertCelsiusToFahrenheit(Double.valueOf(celsiusTemp)));
+        return String.format("%.5f", convertCelsiusToFahrenheit(Double.parseDouble(celsiusTemp)));
     }
 
     public static double convertKelvinToFahrenheit(double kelvinTemp) {
@@ -36,7 +36,7 @@ public class TemperatureConvertor {
     public static String convertKelvinToFahrenheit(String kelvinTemp) {
         if (!StringUtility.isNumber(kelvinTemp))
             throw new InvalidTemperatureException("Temperature is invalid");
-        return String.format("%.5f", convertKelvinToFahrenheit(Double.valueOf(kelvinTemp)));
+        return String.format("%.5f", convertKelvinToFahrenheit(Double.parseDouble(kelvinTemp)));
     }
 
     public static double convertFahrenheitToKelvin(double FahrenheitTemp) {
@@ -46,7 +46,7 @@ public class TemperatureConvertor {
     public static String convertFahrenheitToKelvin(String FahrenheitTemp) {
         if (!StringUtility.isNumber(FahrenheitTemp))
             throw new InvalidTemperatureException("Temperature is invalid");
-        return String.format("%.5f", convertFahrenheitToKelvin(Double.valueOf(FahrenheitTemp)));
+        return String.format("%.5f", convertFahrenheitToKelvin(Double.parseDouble(FahrenheitTemp)));
     }
 
     public static double convertKelvinToCelsius(double KelvinTemp) {
@@ -56,7 +56,7 @@ public class TemperatureConvertor {
     public static String convertKelvinToCelsius(String KelvinTemp) {
         if (!StringUtility.isNumber(KelvinTemp))
             throw new InvalidTemperatureException("Temperature is invalid");
-        return String.format("%.5f", convertKelvinToCelsius(Double.valueOf(KelvinTemp)));
+        return String.format("%.5f", convertKelvinToCelsius(Double.parseDouble(KelvinTemp)));
     }
 
     public static double convertCelsiusToKelvin(double celsiusTemp) {
@@ -66,7 +66,7 @@ public class TemperatureConvertor {
     public static String convertCelsiusToKelvin(String celsiusTemp) {
         if (!StringUtility.isNumber(celsiusTemp))
             throw new InvalidTemperatureException("Temperature is invalid");
-        return String.valueOf(convertCelsiusToKelvin(Double.valueOf(celsiusTemp)));
+        return String.valueOf(convertCelsiusToKelvin(Double.parseDouble(celsiusTemp)));
     }
 
 }
