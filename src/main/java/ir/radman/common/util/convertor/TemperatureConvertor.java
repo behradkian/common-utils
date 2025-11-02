@@ -1,6 +1,6 @@
 package ir.radman.common.util.convertor;
 
-import ir.radman.common.general.exception.unchecked.InvalidTemperatureException;
+import ir.radman.common.general.exception.domain.InvalidTemperatureException;
 import ir.radman.common.util.string.StringUtility;
 
 public class TemperatureConvertor {

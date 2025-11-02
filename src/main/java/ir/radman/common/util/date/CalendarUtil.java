@@ -1,6 +1,6 @@
 package ir.radman.common.util.date;
 
-import ir.radman.common.general.exception.unchecked.DateException;
+import ir.radman.common.general.exception.domain.BadRequestException;
 
 import java.text.DateFormat;
 import java.text.DateFormatSymbols;
@@ -206,7 +206,7 @@ public class CalendarUtil {
                     jalaliCalendar.get(11), jalaliCalendar.get(12),
                     jalaliCalendar.get(13));
         } catch (ParseException e) {
-            throw new DateException("ParseException happened", e);
+            throw new BadRequestException("ParseException happened", e);
         }
     }
 

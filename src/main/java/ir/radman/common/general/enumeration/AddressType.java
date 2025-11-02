@@ -1,6 +1,6 @@
 package ir.radman.common.general.enumeration;
 
-import ir.radman.common.general.exception.unchecked.InvalidEnumException;
+import ir.radman.common.general.exception.domain.InvalidEnumException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

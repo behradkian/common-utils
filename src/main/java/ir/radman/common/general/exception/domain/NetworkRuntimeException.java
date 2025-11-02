@@ -1,9 +1,7 @@
-package ir.radman.common.general.exception.unchecked;
+package ir.radman.common.general.exception.domain;
 
-import ir.radman.common.general.exception.RadmanRuntimeException;
-import lombok.Data;
+import ir.radman.common.general.exception.base.RadmanRuntimeException;
 
-@Data
 public class NetworkRuntimeException extends RadmanRuntimeException {
 
     public NetworkRuntimeException(String message) {

@@ -1,4 +1,4 @@
-package ir.radman.common.general.exception.net;
+package ir.radman.common.general.exception.domain;
 
 public class RestCallException extends RuntimeException {
     public RestCallException() {

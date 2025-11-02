@@ -1,6 +1,6 @@
 package ir.radman.common.util.convertor;
 
-import ir.radman.common.general.exception.unchecked.NetworkRuntimeException;
+import ir.radman.common.general.exception.domain.NetworkRuntimeException;
 
 import java.net.MalformedURLException;
 import java.net.URL;

@@ -1,4 +1,4 @@
-package ir.radman.common.general.exception.redisson;
+package ir.radman.common.general.exception.system.redisson;
 
 public class RedissonCheckLockException extends RedissonException{
 

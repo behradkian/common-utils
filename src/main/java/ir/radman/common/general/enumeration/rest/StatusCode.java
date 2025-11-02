@@ -194,6 +194,6 @@ public enum StatusCode implements Serializable {
      */
     HTTP_VERSION(505);
 
-    private final Integer id;
+    private final Integer code;
 
 }

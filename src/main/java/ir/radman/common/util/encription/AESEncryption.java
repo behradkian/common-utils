@@ -1,7 +1,7 @@
 package ir.radman.common.util.encription;
 
 import ir.radman.common.util.convertor.GeneralConvertor;
-import ir.radman.common.general.exception.unchecked.EncryptionException;
+import ir.radman.common.general.exception.domain.EncryptionException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
