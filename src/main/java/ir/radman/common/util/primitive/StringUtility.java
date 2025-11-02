@@ -10,42 +10,40 @@ public final class StringUtility {
 
     public static final String SPACE = " ";
     public static final String EMPTY = "";
-    public static final String DASH = "-";
-    public static final String SLASH = "/";
-    public static final String BACK_SLASH = "\\";
-    public static final String UNDERLINE = "_";
+    public static final String NULL = "null";
+    public static final char DASH = '-';
+    public static final char SLASH = '/';
+    public static final char BACK_SLASH = '\\';
+    public static final char UNDERLINE = '_';
 
     private StringUtility() {
+        throw new AssertionError("Utility class should not be instantiated");
     }
 
-    public static int countChar(String text, char c) {
+    public static int countCharacter(String text, char character) {
         int count = 0;
         for (int i = 0; i < text.length(); i++) {
-            if (text.charAt(i) == c) {
+            if (text.charAt(i) == character) {
                 count++;
             }
         }
         return count;
     }
 
-    public static boolean isNumber(String numberString) {
-
-        if (numberString == null || numberString.isEmpty())
+    public static boolean isNumber(String text) {
+        if (isBlank(text)) {
             return false;
-
-        Double doubleValue = null;
+        }
         try {
-            doubleValue = Double.valueOf(Double.parseDouble(numberString));
+            Double.parseDouble(text);
             return true;
         } catch (NumberFormatException e) {
             return false;
         }
     }
 
-    public static boolean isBlank(String checkString) {
-        if (checkString == null || checkString.isEmpty() || checkString == EMPTY || checkString.length() == 0)
-            return true;
-        return false;
+    public static boolean isBlank(String text) {
+        return text == null || text.equals(EMPTY) || text.equals(SPACE);
     }
 
     public static String addSpaceBetweenDigitAndWord(String digitWord) {
@@ -57,18 +55,17 @@ public final class StringUtility {
     }
 
     public static String reverse(String text) {
-        StringBuilder reversed = new StringBuilder(text);
-        return reversed.reverse().toString();
+        StringBuilder builder = new StringBuilder(text);
+        return builder.reverse().toString();
     }
 
     public static boolean isPalindrome(String word) {
-
         int left = 0;
         int right = word.length() - 1;
-
         while (left < right) {
-            if (word.charAt(left) != word.charAt(right))
+            if (word.charAt(left) != word.charAt(right)) {
                 return false;
+            }
             left++;
             right--;
         }
@@ -76,17 +73,14 @@ public final class StringUtility {
     }
 
     public static String toCamelCase(String input) {
-
-        if (input == null || input.isEmpty())
-            return "";
-
+        if (isBlank(input)) {
+            return EMPTY;
+        }
         StringBuilder camelCaseString = new StringBuilder();
         boolean capitalizeNext = false;
-
         input = input.trim().toLowerCase();
-
         for (char ch : input.toCharArray()) {
-            if (Character.isWhitespace(ch) || ch == '-' || ch == '_') {
+            if (Character.isWhitespace(ch) || ch == DASH || ch == UNDERLINE) {
                 capitalizeNext = true;
             } else {
                 if (capitalizeNext) {
@@ -97,27 +91,21 @@ public final class StringUtility {
                 }
             }
         }
-        // Convert the first character to lowercase
-        if (!camelCaseString.isEmpty())
+        if (!camelCaseString.isEmpty()) {
             camelCaseString.setCharAt(0, Character.toLowerCase(camelCaseString.charAt(0)));
-
+        }
         return camelCaseString.toString();
     }
 
     public static String toPascalCase(String input) {
-
-        if (input == null || input.isEmpty())
-            return "";
-
+        if (isBlank(input)) {
+            return EMPTY;
+        }
         StringBuilder pascalCaseString = new StringBuilder();
-        boolean capitalizeNext = true; // Start by capitalizing the first letter
-
-        // Trim the input and convert to lowercase
+        boolean capitalizeNext = true;
         input = input.trim().toLowerCase();
-
         for (char ch : input.toCharArray()) {
-            if (Character.isWhitespace(ch) || ch == '-' || ch == '_' || !Character.isLetterOrDigit(ch)) {
-                // Skip special characters and set flag to capitalize next valid character
+            if (Character.isWhitespace(ch) || ch == DASH || ch == UNDERLINE || !Character.isLetterOrDigit(ch)) {
                 capitalizeNext = true;
             } else {
                 if (capitalizeNext) {
@@ -128,12 +116,9 @@ public final class StringUtility {
                 }
             }
         }
-
-        // Handle case where entire string is special characters or empty
         if (pascalCaseString.isEmpty()) {
-            return "";
+            return EMPTY;
         }
-
         return pascalCaseString.toString();
     }
 
@@ -141,11 +126,16 @@ public final class StringUtility {
         if (!isBlank(input)) {
             return input.substring(1);
         }
-        return "";
+        return EMPTY;
+    }
+
+    public static String convertArabicToNumber(String data) {
+        Base64.Decoder decoder = Base64.getDecoder();
+        String decoded = new String(decoder.decode(data), StandardCharsets.UTF_8);
+        return arabicToDecimal(decoded);
     }
 
     private static String arabicToDecimal(String number) {
-
         char[] chars = new char[number.length()];
         for (int i = 0; i < number.length(); i++) {
             char ch = number.charAt(i);
@@ -157,15 +147,4 @@ public final class StringUtility {
         }
         return new String(chars);
     }
-
-    public static String convertArabicToNumber(String data) {
-        String decoded = "";
-        try {
-            Base64.Decoder decoder = Base64.getDecoder();
-            decoded = new String(decoder.decode(data), StandardCharsets.UTF_8);
-        } catch (Exception ignored) {
-        }
-        return arabicToDecimal(decoded);
-    }
-
 }

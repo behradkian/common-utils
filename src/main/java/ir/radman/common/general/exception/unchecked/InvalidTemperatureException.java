@@ -1,10 +1,10 @@
 package ir.radman.common.general.exception.unchecked;
 
-import ir.radman.common.general.exception.BaarmaanRuntimeException;
+import ir.radman.common.general.exception.RadmanRuntimeException;
 import lombok.Data;
 
 @Data
-public class InvalidTemperatureException extends BaarmaanRuntimeException {
+public class InvalidTemperatureException extends RadmanRuntimeException {
 
     public InvalidTemperatureException(String message) {
         super(message);
@@ -14,7 +14,4 @@ public class InvalidTemperatureException extends BaarmaanRuntimeException {
         super(message, cause);
     }
 
-    public InvalidTemperatureException(Throwable cause) {
-        super(cause);
-    }
 }

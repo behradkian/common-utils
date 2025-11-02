@@ -1,10 +1,10 @@
 package ir.radman.common.general.exception.unchecked;
 
-import ir.radman.common.general.exception.BaarmaanRuntimeException;
+import ir.radman.common.general.exception.RadmanRuntimeException;
 import lombok.Data;
 
 @Data
-public class NetworkRuntimeException extends BaarmaanRuntimeException {
+public class NetworkRuntimeException extends RadmanRuntimeException {
 
     public NetworkRuntimeException(String message) {
         super(message);
@@ -14,7 +14,4 @@ public class NetworkRuntimeException extends BaarmaanRuntimeException {
         super(message, cause);
     }
 
-    public NetworkRuntimeException(Throwable cause) {
-        super(cause);
-    }
 }

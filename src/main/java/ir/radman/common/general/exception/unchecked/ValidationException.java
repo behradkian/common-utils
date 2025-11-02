@@ -1,10 +1,10 @@
 package ir.radman.common.general.exception.unchecked;
 
-import ir.radman.common.general.exception.BaarmaanRuntimeException;
+import ir.radman.common.general.exception.RadmanRuntimeException;
 import lombok.Data;
 
 @Data
-public class ValidationException extends BaarmaanRuntimeException {
+public class ValidationException extends RadmanRuntimeException {
     public ValidationException(String message) {
         super(message);
     }
@@ -13,7 +13,4 @@ public class ValidationException extends BaarmaanRuntimeException {
         super(message, cause);
     }
 
-    public ValidationException(Throwable cause) {
-        super(cause);
-    }
 }

@@ -1,8 +1,8 @@
 package ir.radman.common.general.exception.unchecked;
 
-import ir.radman.common.general.exception.BaarmaanRuntimeException;
+import ir.radman.common.general.exception.RadmanRuntimeException;
 
-public class InvalidEnumException extends BaarmaanRuntimeException {
+public class InvalidEnumException extends RadmanRuntimeException {
 
     public InvalidEnumException(String message) {
         super(message);
@@ -12,7 +12,4 @@ public class InvalidEnumException extends BaarmaanRuntimeException {
         super(message, cause);
     }
 
-    public InvalidEnumException(Throwable cause) {
-        super(cause);
-    }
 }
