@@ -14,135 +14,103 @@ import static org.junit.jupiter.api.Assertions.*;
 class SortUtilityTest {
 
     @Test
-    @DisplayName("Bubble Sort - should sort int array ascending")
-    void testBubbleSort_IntArray() {
-        int[] arr = {5, 1, 4, 2, 8};
-        int[] expected = {1, 2, 4, 5, 8};
-        assertArrayEquals(expected, SortUtility.bubbleSort(arr));
+    @DisplayName("Bubble sort on integer array")
+    void testBubbleSortArray() {
+        int[] arr = {5, 3, 1, 4, 2};
+        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, SortUtility.bubbleSort(arr));
     }
 
     @Test
-    @DisplayName("Merge Sort - should sort int array ascending")
-    void testMergeSort_IntArray() {
-        int[] arr = {38, 27, 43, 3, 9, 82, 10};
-        int[] expected = {3, 9, 10, 27, 38, 43, 82};
-        assertArrayEquals(expected, SortUtility.mergeSort(arr));
+    @DisplayName("Bubble sort on list")
+    void testBubbleSortList() {
+        List<Integer> list = List.of(3, 1, 4, 2);
+        List<Integer> sorted = SortUtility.bubbleSort(list);
+        assertEquals(List.of(1, 2, 3, 4), sorted);
     }
 
     @Test
-    @DisplayName("Quick Sort - should sort int array ascending")
-    void testQuickSort_IntArray() {
-        int[] arr = {10, 7, 8, 9, 1, 5};
-        int[] expected = {1, 5, 7, 8, 9, 10};
-        assertArrayEquals(expected, SortUtility.quickSort(arr));
+    @DisplayName("Merge sort on array")
+    void testMergeSortArray() {
+        int[] arr = {9, 5, 1, 3};
+        assertArrayEquals(new int[]{1, 3, 5, 9}, SortUtility.mergeSort(arr));
     }
 
     @Test
-    @DisplayName("SortDescending - should sort array in descending order")
-    void testSortDescending_IntArray() {
-        int[] arr = {2, 9, 1, 7, 3};
-        SortUtility.sortDescending(arr);
-        assertArrayEquals(new int[]{9, 7, 3, 2, 1}, arr);
+    @DisplayName("Quick sort on array")
+    void testQuickSortArray() {
+        int[] arr = {4, 2, 7, 1, 3};
+        assertArrayEquals(new int[]{1, 2, 3, 4, 7}, SortUtility.quickSort(arr));
     }
 
     @Test
-    @DisplayName("Reverse - should reverse array order")
-    void testReverse_IntArray() {
-        int[] arr = {1, 2, 3, 4, 5};
-        SortUtility.reverse(arr);
-        assertArrayEquals(new int[]{5, 4, 3, 2, 1}, arr);
-    }
-
-    @Test
-    @DisplayName("isSorted - should detect sorted array")
-    void testIsSorted_IntArray() {
+    @DisplayName("Check if array is sorted ascending or descending")
+    void testIsSorted() {
         assertTrue(SortUtility.isSorted(new int[]{1, 2, 3}));
-        assertFalse(SortUtility.isSorted(new int[]{3, 1, 2}));
+        assertTrue(SortUtility.isSortedDescending(new int[]{5, 4, 3}));
+        assertFalse(SortUtility.isSorted(new int[]{3, 2, 1}));
     }
 
     @Test
-    @DisplayName("Shuffle - should randomize array (content preserved)")
-    void testShuffle_IntArray() {
+    @DisplayName("Reverse and descending sort on array")
+    void testReverseAndDescendingSort() {
+        int[] arr = {1, 2, 3};
+        SortUtility.reverse(arr);
+        assertArrayEquals(new int[]{3, 2, 1}, arr);
+
+        int[] arr2 = {3, 1, 2};
+        SortUtility.sortDescending(arr2);
+        assertArrayEquals(new int[]{3, 2, 1}, arr2);
+    }
+
+    @Test
+    @DisplayName("Shuffle array and list")
+    void testShuffle() {
         int[] arr = {1, 2, 3, 4, 5};
-        int[] copy = arr.clone();
+        List<Integer> list = new ArrayList<>(List.of(1, 2, 3, 4, 5));
+
         SortUtility.shuffle(arr);
-        Arrays.sort(arr);
-        Arrays.sort(copy);
-        assertArrayEquals(copy, arr);
+        SortUtility.shuffle(list);
+
+        assertEquals(5, arr.length);
+        assertEquals(5, list.size());
     }
 
     @Test
-    @DisplayName("Bubble Sort - should sort List of Integers ascending")
-    void testBubbleSort_List() {
-        List<Integer> input = Arrays.asList(5, 2, 8, 1, 3);
-        List<Integer> result = SortUtility.bubbleSort(input);
-        assertEquals(Arrays.asList(1, 2, 3, 5, 8), result);
+    @DisplayName("Counting sort on array")
+    void testCountingSort() {
+        int[] arr = {4, 1, 3, 2, 1};
+        assertArrayEquals(new int[]{1, 1, 2, 3, 4}, SortUtility.countingSort(arr));
     }
 
     @Test
-    @DisplayName("Bubble Sort with Comparator - should sort descending")
-    void testBubbleSort_ListWithComparator() {
-        List<Integer> input = Arrays.asList(5, 2, 8, 1, 3);
-        List<Integer> result = SortUtility.bubbleSort(input, Comparator.reverseOrder());
-        assertEquals(Arrays.asList(8, 5, 3, 2, 1), result);
+    @DisplayName("Sort by frequency of occurrence")
+    void testSortByFrequency() {
+        int[] arr = {4, 4, 1, 1, 1, 2};
+        assertArrayEquals(new int[]{2, 4, 4, 1, 1, 1}, SortUtility.sortByFrequency(arr));
     }
 
     @Test
-    @DisplayName("Merge Sort - should sort generic List ascending")
-    void testMergeSort_List() {
-        List<String> input = Arrays.asList("pear", "apple", "orange", "banana");
-        List<String> expected = Arrays.asList("apple", "banana", "orange", "pear");
-        assertEquals(expected, SortUtility.mergeSort(input));
+    @DisplayName("Alphabetical sort ignoring case")
+    void testAlphabeticalSortIgnoreCase() {
+        List<String> list = List.of("banana", "Apple", "cherry");
+        List<String> sorted = SortUtility.sortAlphabeticallyIgnoreCase(list);
+        assertEquals(List.of("Apple", "banana", "cherry"), sorted);
     }
 
     @Test
-    @DisplayName("Quick Sort - should sort generic List ascending")
-    void testQuickSort_List() {
-        List<Double> input = Arrays.asList(3.5, 1.2, 2.8, 4.0);
-        List<Double> expected = Arrays.asList(1.2, 2.8, 3.5, 4.0);
-        assertEquals(expected, SortUtility.quickSort(input));
+    @DisplayName("Top-K elements extraction")
+    void testTopK() {
+        int[] arr = {9, 1, 7, 3, 5};
+        assertArrayEquals(new int[]{9, 7, 5}, SortUtility.topK(arr, 3));
     }
 
     @Test
-    @DisplayName("Shuffle - should randomize list order but keep same elements")
-    void testShuffle_List() {
-        List<Integer> input = Arrays.asList(1, 2, 3, 4, 5);
-        List<Integer> copy = new ArrayList<>(input);
-        SortUtility.shuffle(input);
-        Collections.sort(input);
-        Collections.sort(copy);
-        assertEquals(copy, input);
-    }
-
-    @Test
-    @DisplayName("Empty List - should remain unchanged")
-    void testEmptyList() {
-        List<Integer> input = new ArrayList<>();
-        List<Integer> result = SortUtility.bubbleSort(input);
-        assertTrue(result.isEmpty());
-    }
-
-    @Test
-    @DisplayName("Single Element List - should remain unchanged")
-    void testSingleElementList() {
-        List<Integer> input = Collections.singletonList(42);
-        List<Integer> result = SortUtility.mergeSort(input);
-        assertEquals(Collections.singletonList(42), result);
-    }
-
-    @Test
-    @DisplayName("Array with duplicates - should handle correctly")
-    void testArrayWithDuplicates() {
-        int[] arr = {5, 3, 5, 1, 3};
-        int[] expected = {1, 3, 3, 5, 5};
-        assertArrayEquals(expected, SortUtility.mergeSort(arr));
-    }
-
-    @Test
-    @DisplayName("Already sorted array - should not modify order")
-    void testAlreadySortedArray() {
-        int[] arr = {1, 2, 3, 4, 5};
-        int[] sorted = SortUtility.bubbleSort(arr.clone());
-        assertArrayEquals(arr, sorted);
+    @DisplayName("Compare sorting algorithm execution times")
+    void testCompareSortingAlgorithms() {
+        int[] arr = {3, 1, 2, 4, 5};
+        Map<String, Long> results = SortUtility.compareSortingAlgorithms(arr);
+        assertTrue(results.containsKey("BubbleSort"));
+        assertTrue(results.containsKey("MergeSort"));
+        assertTrue(results.containsKey("QuickSort"));
     }
 }

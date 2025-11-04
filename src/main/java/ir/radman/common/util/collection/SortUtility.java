@@ -154,6 +154,86 @@ public final class SortUtility {
         }
     }
 
+    public static int[] sortByFrequency(int[] arr) {
+        Map<Integer, Long> freq = new HashMap<>();
+        for (int n : arr) freq.put(n, freq.getOrDefault(n, 0L) + 1);
+        return Arrays.stream(arr)
+                .boxed()
+                .sorted(Comparator.<Integer, Long>comparing(freq::get)
+                        .thenComparingInt(Integer::intValue))
+                .mapToInt(Integer::intValue)
+                .toArray();
+    }
+
+    public static List<String> sortAlphabeticallyIgnoreCase(List<String> list) {
+        List<String> sorted = new ArrayList<>(list);
+        sorted.sort(String.CASE_INSENSITIVE_ORDER);
+        return sorted;
+    }
+
+    public static <T> List<T> quickSort(List<T> list, Comparator<? super T> comparator) {
+        if (list.size() <= 1) {
+            return new ArrayList<>(list);
+        }
+        T pivot = list.get(list.size() / 2);
+        List<T> less = new ArrayList<>();
+        List<T> equal = new ArrayList<>();
+        List<T> greater = new ArrayList<>();
+        for (T elem : list) {
+            int cmp = comparator.compare(elem, pivot);
+            if (cmp < 0) less.add(elem);
+            else if (cmp > 0) greater.add(elem);
+            else equal.add(elem);
+        }
+        List<T> result = new ArrayList<>(quickSort(less, comparator));
+        result.addAll(equal);
+        result.addAll(quickSort(greater, comparator));
+        return result;
+    }
+
+
+    public static int[] countingSort(int[] arr) {
+        if (arr.length == 0) return arr;
+        int min = Arrays.stream(arr).min().orElse(0);
+        int max = Arrays.stream(arr).max().orElse(0);
+        int[] count = new int[max - min + 1];
+        for (int num : arr) count[num - min]++;
+        int index = 0;
+        for (int i = 0; i < count.length; i++)
+            while (count[i]-- > 0) arr[index++] = i + min;
+        return arr;
+    }
+
+    public static boolean isSortedDescending(int[] arr) {
+        for (int i = 0; i < arr.length - 1; i++)
+            if (arr[i] < arr[i + 1]) return false;
+        return true;
+    }
+
+    public static int[] topK(int[] arr, int k) {
+        return Arrays.stream(arr)
+                .boxed()
+                .sorted(Comparator.reverseOrder())
+                .limit(k)
+                .mapToInt(Integer::intValue)
+                .toArray();
+    }
+
+    public static Map<String, Long> compareSortingAlgorithms(int[] arr) {
+        Map<String, Long> results = new LinkedHashMap<>();
+        results.put("BubbleSort", benchmark(() -> bubbleSort(Arrays.copyOf(arr, arr.length))));
+        results.put("MergeSort", benchmark(() -> mergeSort(Arrays.copyOf(arr, arr.length))));
+        results.put("QuickSort", benchmark(() -> quickSort(Arrays.copyOf(arr, arr.length))));
+        return results;
+    }
+
+
+    public static long benchmark(Runnable sortMethod) {
+        long start = System.nanoTime();
+        sortMethod.run();
+        return System.nanoTime() - start;
+    }
+
     private static int partition(int[] arr, int low, int high) {
         int pivot = arr[high];
         int i = low - 1;
