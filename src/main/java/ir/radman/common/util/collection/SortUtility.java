@@ -1,49 +1,130 @@
 package ir.radman.common.util.collection;
 
-import java.util.List;
+import java.util.*;
 
-public class SortUtility {
+/**
+ * A comprehensive utility class for sorting and array/list manipulation.
+ * Provides multiple algorithms (Bubble, Merge, Quick) and helper methods.
+ *
+ * @author : Pedram Behradkian
+ * @date : 2025/11/04
+ */
+public final class SortUtility {
 
-    private SortUtility() {}
-
-    public static int[] bubbleSort(int[] array) {
-        int arraySize = array.length;
-        for (int i = 0; i < arraySize - 1; i++)
-            for (int j = 0; j < arraySize - i - 1; j++)
-                if (array[j] > array[j + 1]) {
-                    int temp = array[j];
-                    array[j] = array[j + 1];
-                    array[j + 1] = temp;
-                }
-        return array;
+    private SortUtility() {
+        throw new AssertionError("Utility class should not be instantiated");
     }
 
-    public static List<Integer> bubbleSort(List<Integer> array) {
-        int arraySize = array.size();
-        for (int i = 0; i < arraySize - 1; i++) {
-            for (int j = 0; j < arraySize - i - 1; j++) {
-                if (array.get(j) > array.get(j + 1)) {
-                    int temp = array.get(j);
-                    array.set(j, array.get(j + 1));
-                    array.set(j + 1, temp);
+    public static int[] bubbleSort(int[] array) {
+        int n = array.length;
+        boolean swapped;
+        for (int i = 0; i < n - 1; i++) {
+            swapped = false;
+            for (int j = 0; j < n - i - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    swap(array, j, j + 1);
+                    swapped = true;
                 }
             }
+            if (!swapped) break; // Optimization
         }
         return array;
     }
 
     public static int[] mergeSort(int[] array) {
-        return mergeSort(array, 0, array.length - 1);
+        mergeSort(array, 0, array.length - 1);
+        return array;
     }
 
-    private static int[] mergeSort(int[] arr, int left, int right) {
+    public static int[] quickSort(int[] array) {
+        quickSort(array, 0, array.length - 1);
+        return array;
+    }
+
+    public static <T extends Comparable<? super T>> List<T> bubbleSort(List<T> list) {
+        return bubbleSort(list, Comparator.naturalOrder());
+    }
+
+    public static <T> List<T> bubbleSort(List<T> list, Comparator<? super T> comparator) {
+        List<T> sorted = new ArrayList<>(list);
+        int n = sorted.size();
+        boolean swapped;
+        for (int i = 0; i < n - 1; i++) {
+            swapped = false;
+            for (int j = 0; j < n - i - 1; j++) {
+                if (comparator.compare(sorted.get(j), sorted.get(j + 1)) > 0) {
+                    Collections.swap(sorted, j, j + 1);
+                    swapped = true;
+                }
+            }
+            if (!swapped) break;
+        }
+        return sorted;
+    }
+
+    public static <T extends Comparable<? super T>> List<T> mergeSort(List<T> list) {
+        if (list.size() <= 1) return new ArrayList<>(list);
+        int mid = list.size() / 2;
+        List<T> left = mergeSort(list.subList(0, mid));
+        List<T> right = mergeSort(list.subList(mid, list.size()));
+        return merge(left, right);
+    }
+
+    public static <T extends Comparable<? super T>> List<T> quickSort(List<T> list) {
+        if (list.size() <= 1) return new ArrayList<>(list);
+        T pivot = list.get(list.size() / 2);
+        List<T> less = new ArrayList<>();
+        List<T> equal = new ArrayList<>();
+        List<T> greater = new ArrayList<>();
+        for (T elem : list) {
+            int cmp = elem.compareTo(pivot);
+            if (cmp < 0) less.add(elem);
+            else if (cmp > 0) greater.add(elem);
+            else equal.add(elem);
+        }
+        List<T> result = new ArrayList<>(quickSort(less));
+        result.addAll(equal);
+        result.addAll(quickSort(greater));
+        return result;
+    }
+
+    public static boolean isSorted(int[] arr) {
+        for (int i = 0; i < arr.length - 1; i++)
+            if (arr[i] > arr[i + 1])
+                return false;
+        return true;
+    }
+
+    public static void reverse(int[] arr) {
+        for (int i = 0; i < arr.length / 2; i++) {
+            swap(arr, i, arr.length - 1 - i);
+        }
+    }
+
+    public static void sortDescending(int[] arr) {
+        Arrays.sort(arr);
+        reverse(arr);
+    }
+
+    public static void shuffle(int[] arr) {
+        Random random = new Random();
+        for (int i = arr.length - 1; i > 0; i--) {
+            int j = random.nextInt(i + 1);
+            swap(arr, i, j);
+        }
+    }
+
+    public static <T> void shuffle(List<T> list) {
+        Collections.shuffle(list);
+    }
+
+    private static void mergeSort(int[] arr, int left, int right) {
         if (left < right) {
             int mid = (left + right) / 2;
             mergeSort(arr, left, mid);
             mergeSort(arr, mid + 1, right);
             merge(arr, left, mid, right);
         }
-        return arr;
     }
 
     private static void merge(int[] arr, int left, int mid, int right) {
@@ -56,23 +137,50 @@ public class SortUtility {
         System.arraycopy(arr, left, L, 0, n1);
         System.arraycopy(arr, mid + 1, R, 0, n2);
 
-        int i = 0, j = 0;
-        int k = left;
+        int i = 0, j = 0, k = left;
         while (i < n1 && j < n2) {
-            if (L[i] <= R[j]) {
-                arr[k++] = L[i++];
-            } else {
-                arr[k++] = R[j++];
-            }
+            arr[k++] = (L[i] <= R[j]) ? L[i++] : R[j++];
         }
 
-        while (i < n1) {
-            arr[k++] = L[i++];
-        }
+        while (i < n1) arr[k++] = L[i++];
+        while (j < n2) arr[k++] = R[j++];
+    }
 
-        while (j < n2) {
-            arr[k++] = R[j++];
+    private static void quickSort(int[] arr, int low, int high) {
+        if (low < high) {
+            int pivotIndex = partition(arr, low, high);
+            quickSort(arr, low, pivotIndex - 1);
+            quickSort(arr, pivotIndex + 1, high);
         }
     }
 
+    private static int partition(int[] arr, int low, int high) {
+        int pivot = arr[high];
+        int i = low - 1;
+        for (int j = low; j < high; j++) {
+            if (arr[j] <= pivot) {
+                swap(arr, ++i, j);
+            }
+        }
+        swap(arr, i + 1, high);
+        return i + 1;
+    }
+
+    private static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    private static <T extends Comparable<? super T>> List<T> merge(List<T> left, List<T> right) {
+        List<T> merged = new ArrayList<>();
+        int i = 0, j = 0;
+        while (i < left.size() && j < right.size()) {
+            if (left.get(i).compareTo(right.get(j)) <= 0) merged.add(left.get(i++));
+            else merged.add(right.get(j++));
+        }
+        while (i < left.size()) merged.add(left.get(i++));
+        while (j < right.size()) merged.add(right.get(j++));
+        return merged;
+    }
 }
