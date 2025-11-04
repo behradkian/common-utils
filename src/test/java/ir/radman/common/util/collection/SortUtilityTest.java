@@ -113,4 +113,97 @@ class SortUtilityTest {
         assertTrue(results.containsKey("MergeSort"));
         assertTrue(results.containsKey("QuickSort"));
     }
+
+    @Test
+    @DisplayName("mergeSort(List<T>) should correctly sort integers in ascending order")
+    void testMergeSortAscending() {
+        List<Integer> input = Arrays.asList(5, 2, 8, 1, 3);
+        List<Integer> expected = Arrays.asList(1, 2, 3, 5, 8);
+
+        List<Integer> result = SortUtility.mergeSort(input);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    @DisplayName("mergeSort(List<T>) should handle empty list")
+    void testMergeSortEmptyList() {
+        List<Integer> input = Collections.emptyList();
+
+        List<Integer> result = SortUtility.mergeSort(input);
+
+        assertTrue(result.isEmpty());
+    }
+
+    @Test
+    @DisplayName("quickSort(List<T>) should correctly sort strings alphabetically")
+    void testQuickSortStrings() {
+        List<String> input = Arrays.asList("banana", "apple", "pear", "orange");
+        List<String> expected = Arrays.asList("apple", "banana", "orange", "pear");
+
+        List<String> result = SortUtility.quickSort(input);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    @DisplayName("quickSort(List<T>) should handle list with duplicate values")
+    void testQuickSortDuplicates() {
+        List<Integer> input = Arrays.asList(4, 2, 4, 1, 2);
+        List<Integer> expected = Arrays.asList(1, 2, 2, 4, 4);
+
+        List<Integer> result = SortUtility.quickSort(input);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    @DisplayName("bubbleSort(List<T>, Comparator) should sort list based on custom comparator (descending order)")
+    void testBubbleSortWithComparatorDescending() {
+        List<Integer> input = Arrays.asList(1, 3, 2, 5, 4);
+        List<Integer> expected = Arrays.asList(5, 4, 3, 2, 1);
+
+        List<Integer> result = SortUtility.bubbleSort(input, Comparator.reverseOrder());
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    @DisplayName("bubbleSort(List<T>, Comparator) should handle list with equal elements")
+    void testBubbleSortWithEqualElements() {
+        List<Integer> input = Arrays.asList(2, 2, 2);
+        List<Integer> result = SortUtility.bubbleSort(input, Comparator.naturalOrder());
+
+        assertEquals(Arrays.asList(2, 2, 2), result);
+    }
+
+    @Test
+    @DisplayName("quickSort(List<T>, Comparator) should correctly sort custom objects by comparator")
+    void testQuickSortWithComparatorCustomType() {
+        record Person(String name, int age) {}
+
+        List<Person> input = Arrays.asList(
+                new Person("Alice", 25),
+                new Person("Bob", 20),
+                new Person("Charlie", 30)
+        );
+
+        List<Person> result = SortUtility.quickSort(input, Comparator.comparingInt(Person::age));
+
+        assertEquals(Arrays.asList(
+                new Person("Bob", 20),
+                new Person("Alice", 25),
+                new Person("Charlie", 30)
+        ), result);
+    }
+
+    @Test
+    @DisplayName("quickSort(List<T>, Comparator) should handle empty list gracefully")
+    void testQuickSortWithComparatorEmptyList() {
+        List<Integer> input = Collections.emptyList();
+
+        List<Integer> result = SortUtility.quickSort(input, Comparator.naturalOrder());
+
+        assertTrue(result.isEmpty());
+    }
 }
