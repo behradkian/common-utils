@@ -63,7 +63,9 @@ public final class SortUtility {
     }
 
     public static <T extends Comparable<? super T>> List<T> mergeSort(List<T> list) {
-        if (list.size() <= 1) return new ArrayList<>(list);
+        if (list.size() <= 1) {
+            return new ArrayList<>(list);
+        }
         int mid = list.size() / 2;
         List<T> left = mergeSort(list.subList(0, mid));
         List<T> right = mergeSort(list.subList(mid, list.size()));
@@ -71,7 +73,9 @@ public final class SortUtility {
     }
 
     public static <T extends Comparable<? super T>> List<T> quickSort(List<T> list) {
-        if (list.size() <= 1) return new ArrayList<>(list);
+        if (list.size() <= 1) {
+            return new ArrayList<>(list);
+        }
         T pivot = list.get(list.size() / 2);
         List<T> less = new ArrayList<>();
         List<T> equal = new ArrayList<>();
