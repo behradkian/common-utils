@@ -1,4 +1,4 @@
-package ir.radman.common.util.date;
+package ir.radman.common.util.basic.date;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;

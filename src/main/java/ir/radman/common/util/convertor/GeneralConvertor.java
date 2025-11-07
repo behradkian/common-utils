@@ -6,8 +6,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.HexFormat;
 
-import ir.radman.common.util.string.StringUtility;
+import ir.radman.common.util.basic.string.StringUtility;
 import org.apache.commons.codec.binary.Base64;
 
 public class GeneralConvertor {
@@ -57,6 +58,20 @@ public class GeneralConvertor {
             return Base64.encodeBase64String(bytes);
         return null;
     }
+
+    public static String bytesToHex(byte[] bytes) {
+        StringBuilder sb = new StringBuilder(bytes.length * 2);
+        for (byte b : bytes) {
+            sb.append(String.format("%02x", b));
+        }
+        return sb.toString();
+    }
+
+    public static String toHex(byte[] bytes) {
+        return HexFormat.of().formatHex(bytes);
+    }
+
+
 
 
 }

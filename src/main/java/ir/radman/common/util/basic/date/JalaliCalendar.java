@@ -1,4 +1,4 @@
-package ir.radman.common.util.date;
+package ir.radman.common.util.basic.date;
 
 import ir.radman.common.general.enumeration.date.PersianMonthType;
 

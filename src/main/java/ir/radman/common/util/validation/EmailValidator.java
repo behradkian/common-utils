@@ -1,6 +1,6 @@
 package ir.radman.common.util.validation;
 
-import ir.radman.common.util.string.StringUtility;
+import ir.radman.common.util.basic.string.StringUtility;
 
 /**
  * @author : Pedram Behradkian

@@ -1,4 +1,4 @@
-package ir.radman.common.util.enums;
+package ir.radman.common.util.basic.enums;
 
 import ir.radman.common.general.exception.domain.InvalidEnumException;
 

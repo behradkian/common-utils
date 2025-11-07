@@ -1,4 +1,4 @@
-package ir.radman.common.util.date;
+package ir.radman.common.util.basic.date;
 
 public class PersianCalendarUtils {
     public PersianCalendarUtils() {

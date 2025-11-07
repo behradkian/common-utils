@@ -1,6 +1,6 @@
-package ir.radman.common.util.number;
+package ir.radman.common.util.basic.number;
 
-import ir.radman.common.util.string.StringUtility;
+import ir.radman.common.util.basic.string.StringUtility;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

@@ -1,4 +1,4 @@
-package ir.radman.common.util.string;
+package ir.radman.common.util.basic.string;
 
 import ir.radman.common.util.convertor.JsonConvertor;
 

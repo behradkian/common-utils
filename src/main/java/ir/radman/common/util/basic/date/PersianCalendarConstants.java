@@ -1,4 +1,4 @@
-package ir.radman.common.util.date;
+package ir.radman.common.util.basic.date;
 
 public class PersianCalendarConstants {
     public static final long MILLIS_JULIAN_EPOCH = -210866803200000L;

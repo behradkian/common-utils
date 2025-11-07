@@ -1,4 +1,4 @@
-package ir.radman.common.util.number;
+package ir.radman.common.util.basic.number;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

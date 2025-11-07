@@ -1,4 +1,4 @@
-package ir.radman.common.util.collection;
+package ir.radman.common.util.basic.collection;
 
 import java.util.*;
 
