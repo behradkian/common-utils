@@ -6,12 +6,12 @@ import ir.radman.common.general.exception.base.RadmanRuntimeException;
  * @author : Pedram Behradkian
  * @date : 2025/11/07
  */
-public class GenerateHashException extends RadmanRuntimeException {
-    public GenerateHashException(String message) {
+public class HashException extends RadmanRuntimeException {
+    public HashException(String message) {
         super(message);
     }
 
-    public GenerateHashException(String message, Throwable cause) {
+    public HashException(String message, Throwable cause) {
         super(message, cause);
     }
 }

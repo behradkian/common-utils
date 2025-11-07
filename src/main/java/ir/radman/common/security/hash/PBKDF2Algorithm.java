@@ -1,8 +1,9 @@
-package ir.radman.common.general.enumeration;
+package ir.radman.common.security.hash;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 /**
@@ -11,7 +12,7 @@ import java.util.Arrays;
  */
 @Getter
 @AllArgsConstructor
-public enum PBKDF2Algorithm {
+public enum PBKDF2Algorithm implements Serializable {
     PBKDF2_HMAC_SHA1("PBKDF2WithHmacSHA1"),
     PBKDF2_HMAC_SHA224("PBKDF2WithHmacSHA224"),
     PBKDF2_HMAC_SHA256("PBKDF2WithHmacSHA256"),

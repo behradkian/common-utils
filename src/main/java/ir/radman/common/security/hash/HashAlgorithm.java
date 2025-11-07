@@ -1,7 +1,9 @@
-package ir.radman.common.general.enumeration;
+package ir.radman.common.security.hash;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+
+import java.io.Serializable;
 
 /**
  * Enum for supported hashing algorithms.
@@ -11,7 +13,7 @@ import lombok.Getter;
  */
 @Getter
 @AllArgsConstructor
-public enum HashAlgorithm {
+public enum HashAlgorithm  implements Serializable {
     MD5("MD5", 128),
     SHA1("SHA-1", 160),
     SHA224("SHA-224", 224),

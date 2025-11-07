@@ -1,8 +1,6 @@
-package ir.radman.common.util.hash;
+package ir.radman.common.security.hash;
 
-import ir.radman.common.general.enumeration.HashAlgorithm;
-import ir.radman.common.general.enumeration.PBKDF2Algorithm;
-import ir.radman.common.general.exception.domain.GenerateHashException;
+import ir.radman.common.general.exception.domain.HashException;
 
 import javax.crypto.Mac;
 import javax.crypto.SecretKeyFactory;
@@ -27,6 +25,9 @@ import java.util.concurrent.ConcurrentHashMap;
  * - parameterized PBKDF2 algorithm + sensible defaults
  * - consistent hex output (lowercase)
  * - clearer exception messages
+ *
+ * @author : Pedram Behradkian
+ * @date : 2025/11/07
  */
 public final class HashGenerator {
 
@@ -44,7 +45,7 @@ public final class HashGenerator {
         try {
             return MessageDigest.getInstance(algorithm);
         } catch (NoSuchAlgorithmException e) {
-            throw new GenerateHashException("Unsupported algorithm: " + algorithm, e);
+            throw new HashException("Unsupported algorithm: " + algorithm, e);
         }
     }
 
@@ -69,7 +70,7 @@ public final class HashGenerator {
             mac.init(keySpec);
             return mac;
         } catch (Exception e) {
-            throw new GenerateHashException("Failed to initialize Mac: " + algorithm, e);
+            throw new HashException("Failed to initialize Mac: " + algorithm, e);
         }
     }
 
@@ -90,13 +91,13 @@ public final class HashGenerator {
             byte[] digest = md.digest(input.getBytes(StandardCharsets.UTF_8));
             return bytesToHexLower(digest);
         } catch (Exception e) {
-            throw new GenerateHashException("Failed to generate hash for algorithm: " + algorithm, e);
+            throw new HashException("Failed to generate hash for algorithm: " + algorithm, e);
         }
     }
 
     public static String hashFile(Path path, HashAlgorithm algorithm) {
         if (path == null || !Files.exists(path)) {
-            throw new GenerateHashException("File does not exist: " + path);
+            throw new HashException("File does not exist: " + path);
         }
         try (InputStream in = Files.newInputStream(path)) {
             Objects.requireNonNull(algorithm, "Algorithm cannot be null");
@@ -109,7 +110,7 @@ public final class HashGenerator {
             }
             return bytesToHexLower(messageDigest.digest());
         } catch (Exception e) {
-            throw new GenerateHashException("Failed to hash file: " + path, e);
+            throw new HashException("Failed to hash file: " + path, e);
         }
     }
 
@@ -127,7 +128,7 @@ public final class HashGenerator {
             }
             return bytesToHexLower(md.digest());
         } catch (Exception e) {
-            throw new GenerateHashException("Failed to generate multiple hash", e);
+            throw new HashException("Failed to generate multiple hash", e);
         }
     }
 
@@ -164,7 +165,7 @@ public final class HashGenerator {
             md.update(input.getBytes(StandardCharsets.UTF_8));
             return bytesToHexLower(md.digest());
         } catch (Exception e) {
-            throw new GenerateHashException("Failed to generate hash with salt", e);
+            throw new HashException("Failed to generate hash with salt", e);
         }
     }
 
@@ -184,7 +185,7 @@ public final class HashGenerator {
             byte[] out = mac.doFinal(message.getBytes(StandardCharsets.UTF_8));
             return bytesToHexLower(out);
         } catch (Exception e) {
-            throw new GenerateHashException("Failed to sign message", e);
+            throw new HashException("Failed to sign message", e);
         }
     }
 
@@ -224,7 +225,7 @@ public final class HashGenerator {
             byte[] hash = skf.generateSecret(spec).getEncoded();
             return slowEquals(bytesToHexLower(hash), storedHash);
         } catch (Exception e) {
-            throw new GenerateHashException("PBKDF2 verification failed", e);
+            throw new HashException("PBKDF2 verification failed", e);
         }
     }
 
@@ -239,7 +240,7 @@ public final class HashGenerator {
             byte[] hash = skf.generateSecret(spec).getEncoded();
             return bytesToHexLower(hash);
         } catch (Exception e) {
-            throw new GenerateHashException("Failed to generate PBKDF2 hash", e);
+            throw new HashException("Failed to generate PBKDF2 hash", e);
         }
     }
 
@@ -281,7 +282,7 @@ public final class HashGenerator {
             byte[] digest = md.digest(input.getBytes(StandardCharsets.UTF_8));
             return Base64.getEncoder().encodeToString(digest);
         } catch (Exception e) {
-            throw new GenerateHashException("Failed to generate base64 hash", e);
+            throw new HashException("Failed to generate base64 hash", e);
         }
     }
 
@@ -349,7 +350,7 @@ public final class HashGenerator {
             }
             return bytesToHexLower(messageDigest.digest());
         } catch (Exception e) {
-            throw new GenerateHashException("Failed to hash InputStream", e);
+            throw new HashException("Failed to hash InputStream", e);
         }
     }
 

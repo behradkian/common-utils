@@ -1,8 +1,6 @@
-package ir.radman.common.util.hash;
+package ir.radman.common.security.hash;
 
-import ir.radman.common.general.enumeration.HashAlgorithm;
-import ir.radman.common.general.enumeration.PBKDF2Algorithm;
-import ir.radman.common.general.exception.domain.GenerateHashException;
+import ir.radman.common.general.exception.domain.HashException;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.io.TempDir;
 
@@ -61,11 +59,11 @@ public class HashGeneratorTest {
     @DisplayName("Test hash with null parameters")
     void testHashWithNullParameters() {
         // Test null input
-        assertThrows(GenerateHashException.class, () ->
+        assertThrows(HashException.class, () ->
                 HashGenerator.hash(null, HashAlgorithm.SHA256));
 
         // Test null algorithm
-        assertThrows(GenerateHashException.class, () ->
+        assertThrows(HashException.class, () ->
                 HashGenerator.hash(TEST_STRING, null));
     }
 
@@ -91,7 +89,7 @@ public class HashGeneratorTest {
     @DisplayName("Test file hashing with non-existent file")
     void testHashFileNonExistent() {
         Path nonExistentFile = tempDir.resolve("nonexistent.txt");
-        assertThrows(GenerateHashException.class, () ->
+        assertThrows(HashException.class, () ->
                 HashGenerator.hashFile(nonExistentFile, HashAlgorithm.SHA256));
     }
 
@@ -423,7 +421,7 @@ public class HashGeneratorTest {
     @Order(26)
     @DisplayName("Test file hashing with directory path")
     void testHashFileWithDirectory() {
-        assertThrows(GenerateHashException.class, () ->
+        assertThrows(HashException.class, () ->
                 HashGenerator.hashFile(tempDir, HashAlgorithm.SHA256));
     }
 
@@ -450,13 +448,13 @@ public class HashGeneratorTest {
     @DisplayName("Test specific exception messages")
     void testExceptionMessages() {
         // Test null input in hash method
-        GenerateHashException exception = assertThrows(GenerateHashException.class,
+        HashException exception = assertThrows(HashException.class,
                 () -> HashGenerator.hash(null, HashAlgorithm.SHA256));
         assertTrue(exception.getMessage().contains("Failed to generate hash"));
 
         // Test file not found
         Path nonExistent = tempDir.resolve("nonexistent.dat");
-        exception = assertThrows(GenerateHashException.class,
+        exception = assertThrows(HashException.class,
                 () -> HashGenerator.hashFile(nonExistent, HashAlgorithm.SHA256));
         assertTrue(exception.getMessage().contains("File does not exist"));
     }
