@@ -29,6 +29,7 @@ public final class EncryptionUtility {
 
     private static final SecureRandom SECURE_RANDOM = new SecureRandom();
     private static final Map<String, ThreadLocal<Cipher>> CIPHER_CACHE = new ConcurrentHashMap<>();
+    public static final int MAX_DATA_SIZE = 10 * 1024 * 1024; // 10MB
 
     private EncryptionUtility() {
         throw new AssertionError("Utility class should not be instantiated");
@@ -160,6 +161,9 @@ public final class EncryptionUtility {
         Objects.requireNonNull(input);
         Objects.requireNonNull(output);
         Objects.requireNonNull(key);
+        if (input.length() > MAX_DATA_SIZE) {
+            throw new EncryptionException("File size too large");
+        }
         try (FileInputStream fis = new FileInputStream(input);
              FileOutputStream fos = new FileOutputStream(output)) {
             byte[] iv = randomBytes(algorithm.getIvLength());
