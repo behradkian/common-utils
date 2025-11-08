@@ -1,6 +1,6 @@
 package ir.radman.common.general.exception.base;
 
-import ir.radman.common.general.enumeration.rest.StatusCode;
+import ir.radman.common.general.enumeration.http.StatusCode;
 import lombok.Getter;
 
 import java.io.Serial;
@@ -32,15 +32,20 @@ public abstract class RadmanRuntimeException extends RuntimeException implements
     private final Instant timestamp;
 
     public RadmanRuntimeException(String message) {
-        this(StatusCode.HTTP_BAD_REQUEST, null, null, message, null);
+        this(StatusCode.BAD_REQUEST, null, null, message, null);
     }
 
     public RadmanRuntimeException(String message, Throwable cause) {
-        this(StatusCode.HTTP_BAD_REQUEST, null, null, message, cause);
+        this(StatusCode.BAD_REQUEST, null, null, message, cause);
     }
+
 
     public RadmanRuntimeException(StatusCode status, String message) {
         this(status, null, null, message, null);
+    }
+
+    public RadmanRuntimeException(StatusCode status, String message, Throwable cause) {
+        this(status, null, null, message, cause);
     }
 
     public RadmanRuntimeException(StatusCode status, String errorCode, String message) {
@@ -49,7 +54,7 @@ public abstract class RadmanRuntimeException extends RuntimeException implements
 
     protected RadmanRuntimeException(StatusCode status, String errorCode, Map<String, Object> params, String message, Throwable cause) {
         super(message, cause);
-        this.status = status != null ? status : StatusCode.HTTP_INTERNAL_ERROR;
+        this.status = status != null ? status : StatusCode.INTERNAL_SERVER_ERROR;
         this.errorCode = (errorCode != null ? errorCode : this.getClass().getSimpleName());
         this.params = (params == null ? Collections.emptyMap() : Map.copyOf(params));
         this.timestamp = Instant.now();

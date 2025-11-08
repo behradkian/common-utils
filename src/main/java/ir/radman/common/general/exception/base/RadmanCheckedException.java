@@ -1,6 +1,6 @@
 package ir.radman.common.general.exception.base;
 
-import ir.radman.common.general.enumeration.rest.StatusCode;
+import ir.radman.common.general.enumeration.http.StatusCode;
 import lombok.Getter;
 
 import java.io.Serial;
@@ -22,11 +22,11 @@ public abstract class RadmanCheckedException extends Exception implements Serial
     private final Instant timestamp;
 
     public RadmanCheckedException(String message) {
-        this(StatusCode.HTTP_BAD_REQUEST, null, null, message, null);
+        this(StatusCode.BAD_REQUEST, null, null, message, null);
     }
 
     public RadmanCheckedException(String message, Throwable cause) {
-        this(StatusCode.HTTP_BAD_REQUEST, null, null, message, cause);
+        this(StatusCode.BAD_REQUEST, null, null, message, cause);
     }
 
     public RadmanCheckedException(StatusCode status, String message) {

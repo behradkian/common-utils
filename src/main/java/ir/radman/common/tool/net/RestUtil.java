@@ -1,8 +1,7 @@
 package ir.radman.common.tool.net;
 
 import ir.radman.common.general.dto.net.RestResponseDto;
-import ir.radman.common.general.enumeration.rest.ContentType;
-import ir.radman.common.general.enumeration.rest.SecurityProtocol;
+import ir.radman.common.general.enumeration.http.SecurityProtocol;
 import ir.radman.common.general.exception.domain.RestCallException;
 import jakarta.ws.rs.core.MediaType;
 import org.apache.cxf.jaxrs.client.WebClient;

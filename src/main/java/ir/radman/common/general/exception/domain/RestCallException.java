@@ -1,15 +1,15 @@
 package ir.radman.common.general.exception.domain;
 
-public class RestCallException extends RuntimeException {
-    public RestCallException() {
+import ir.radman.common.general.enumeration.http.StatusCode;
+import ir.radman.common.general.exception.base.RadmanRuntimeException;
 
+public class RestCallException extends RadmanRuntimeException {
+
+    public RestCallException(StatusCode status, String message) {
+        super(status, message);
     }
 
-    public RestCallException(String message) {
-        super(message);
-    }
-
-    public RestCallException(String message, Throwable cause) {
-        super(message, cause);
+    public RestCallException(StatusCode status, String message, Throwable cause) {
+        super(status, message, cause);
     }
 }

@@ -1,6 +1,6 @@
 package ir.radman.common.general.exception.domain;
 
-import ir.radman.common.general.enumeration.rest.StatusCode;
+import ir.radman.common.general.enumeration.http.StatusCode;
 import ir.radman.common.general.exception.base.RadmanRuntimeException;
 
 public class InvalidEnumException extends RadmanRuntimeException {
