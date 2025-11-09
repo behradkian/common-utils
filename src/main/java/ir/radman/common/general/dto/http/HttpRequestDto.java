@@ -14,13 +14,14 @@ import java.util.Map;
 public record HttpRequestDto(
         String url,
         HttpMethod method,
-        Map<String, String> headers,
+        ContentType contentType,
+        Map<String, Object> headers,
         String body,
         Map<String, String> formParams,
-        ContentType contentType,
         int timeoutSeconds,
         boolean trustAllSsl
 ) {
+
     public boolean isFormRequest() {
         return formParams != null && !formParams.isEmpty();
     }

@@ -8,7 +8,6 @@ import java.io.Serializable;
 @Getter
 @AllArgsConstructor
 public enum HttpMethod implements Serializable {
-
     GET("GET"),
     POST("POST"),
     PUT("PUT"),
