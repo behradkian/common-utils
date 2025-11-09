@@ -10,7 +10,8 @@ import java.util.Arrays;
  * Enumeration representing standard HTTP status codes.
  * Provides helper methods for reverse lookup and category detection.
  *
- * @author Pedram
+ * @author : Pedram Behradkian
+ * @date : 2025/11/07
  */
 @Getter
 @AllArgsConstructor
