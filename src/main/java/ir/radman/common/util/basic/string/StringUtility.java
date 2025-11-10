@@ -71,6 +71,10 @@ public final class StringUtility {
         return text == null || text.isBlank();
     }
 
+    public static boolean isNotBlank(String text) {
+        return !isBlank(text);
+    }
+
     /**
      * Adds a space between digits and letters in a text.
      * Example: "abc123def" → "abc 123 def"
