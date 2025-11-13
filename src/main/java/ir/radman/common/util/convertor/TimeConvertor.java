@@ -4,7 +4,9 @@ import ir.radman.common.general.enumeration.date.TimeUnit;
 
 public class TimeConvertor {
 
-    private TimeConvertor() {}
+    private TimeConvertor() {
+        throw new AssertionError("Utility class should not be instantiated");
+    }
 
     public static double convertTime(TimeUnit fromUnit, TimeUnit toUnit, double value) {
         double valueInMilliseconds = convertToMilliseconds(fromUnit, value);
