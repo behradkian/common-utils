@@ -21,7 +21,6 @@ public class TimeConvertor {
             case MINUTE -> value * 60 * 1000;
             case SECOND -> value * 1000;
             case MILLI_SECOND -> value;
-            default -> throw new IllegalArgumentException("Invalid from unit: " + unit);
         };
     }
 
@@ -33,7 +32,6 @@ public class TimeConvertor {
             case MINUTE -> valueInMilliseconds / (60 * 1000);
             case SECOND -> valueInMilliseconds / 1000;
             case MILLI_SECOND -> valueInMilliseconds;
-            default -> throw new IllegalArgumentException("Invalid to unit: " + unit);
         };
     }
 
