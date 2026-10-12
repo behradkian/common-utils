@@ -1,15 +1,14 @@
 package radman.util.convertor;
 
+import org.apache.commons.codec.binary.Base64;
 import radman.util.exception.domain.NetworkRuntimeException;
+import radman.util.string.StringUtility;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.HexFormat;
-
-import radman.util.string.StringUtility;
-import org.apache.commons.codec.binary.Base64;
 
 public class GeneralConvertor {
 
@@ -70,8 +69,6 @@ public class GeneralConvertor {
     public static String toHex(byte[] bytes) {
         return HexFormat.of().formatHex(bytes);
     }
-
-
 
 
 }

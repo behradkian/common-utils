@@ -35,18 +35,6 @@ public enum LengthUnit implements Serializable {
     LIGHT_YEAR("ly", "light_year", new BigDecimal("9.4607304725808e15")),
     PARSEC("pc", "parsec", new BigDecimal("3.08567758149137e16"));
 
-    private final String symbol;
-    private final String name;
-    private final BigDecimal toMetersFactor;
-    private final BigDecimal fromMetersFactor;
-
-    LengthUnit(String symbol, String name, BigDecimal toMetersFactor) {
-        this.symbol = symbol;
-        this.name = name;
-        this.toMetersFactor = toMetersFactor;
-        this.fromMetersFactor = BigDecimal.ONE.divide(toMetersFactor, MathContext.DECIMAL128);
-    }
-
     private static final Map<String, LengthUnit> LOOKUP_MAP;
 
     static {
@@ -76,6 +64,18 @@ public enum LengthUnit implements Serializable {
             }
         }
         LOOKUP_MAP = Collections.unmodifiableMap(map);
+    }
+
+    private final String symbol;
+    private final String name;
+    private final BigDecimal toMetersFactor;
+    private final BigDecimal fromMetersFactor;
+
+    LengthUnit(String symbol, String name, BigDecimal toMetersFactor) {
+        this.symbol = symbol;
+        this.name = name;
+        this.toMetersFactor = toMetersFactor;
+        this.fromMetersFactor = BigDecimal.ONE.divide(toMetersFactor, MathContext.DECIMAL128);
     }
 
     public static LengthUnit from(String key) {

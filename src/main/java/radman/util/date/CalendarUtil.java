@@ -218,7 +218,6 @@ public class CalendarUtil {
     }
 
 
-
     public static String getSpecificDate(Date specificDate, int day_of_month) {
         JalaliCalendar jalaliDate = new JalaliCalendar(specificDate);
         return calculateSpecificDate(jalaliDate, day_of_month);

@@ -16,7 +16,6 @@ import java.util.stream.Stream;
  * All methods are static and null-safe.
  *
  * @author : Pedram Behradkian
- * @date : 2025/10/31
  */
 public final class StringUtility {
 

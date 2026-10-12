@@ -71,14 +71,13 @@ public class RedissonClientConfiguration {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("RedissonClientConfiguration{");
-        sb.append("password='").append(password).append('\'');
-        sb.append(", dataBaseId=").append(dataBaseId);
-        sb.append(", address='").append(address).append('\'');
-        sb.append(", userName='").append(userName).append('\'');
-        sb.append(", expirationTime=").append(expirationTime);
-        sb.append(", defaultCacheName='").append(defaultCacheName).append('\'');
-        sb.append('}');
-        return sb.toString();
+        String sb = "RedissonClientConfiguration{" + "password='" + password + '\'' +
+                ", dataBaseId=" + dataBaseId +
+                ", address='" + address + '\'' +
+                ", userName='" + userName + '\'' +
+                ", expirationTime=" + expirationTime +
+                ", defaultCacheName='" + defaultCacheName + '\'' +
+                '}';
+        return sb;
     }
 }

@@ -1,9 +1,9 @@
 package radman.util.general.enumeration;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import radman.util.exception.domain.InvalidEnumException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import radman.util.exception.domain.InvalidEnumException;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -18,11 +18,10 @@ public enum PersonType implements Serializable {
     REAL_PERSON(1, "REAL"),
     CORPORATE_PERSON(2, "CORPORATE");
 
-    private final int id;
-    private final String code;
-
     private static final Map<Integer, PersonType> LOOKUP_BY_ID = Arrays.stream(values()).collect(Collectors.toUnmodifiableMap(PersonType::getId, e -> e));
     private static final Map<String, PersonType> LOOKUP_BY_CODE = Arrays.stream(values()).collect(Collectors.toUnmodifiableMap(PersonType::getCode, e -> e));
+    private final int id;
+    private final String code;
 
     public static PersonType getById(int id) {
         PersonType type = LOOKUP_BY_ID.get(id);

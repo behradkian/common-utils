@@ -1,7 +1,7 @@
 package radman.util.date;
 
-import radman.util.string.StringUtility;
 import org.apache.commons.lang3.StringUtils;
+import radman.util.string.StringUtility;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -17,7 +17,7 @@ public class DateConverter {
     }
 
     public static SimpleDateFormat getSimpleDate(String formatDate) {
-        if(StringUtility.isBlank(formatDate))
+        if (StringUtility.isBlank(formatDate))
             return getSimpleDate();
 
         return new SimpleDateFormat(formatDate);
@@ -26,7 +26,7 @@ public class DateConverter {
     public static String convertDateToPersian(Date date, String formatDate) throws ParseException {
         SimpleDateFormat simpleDateFormat = getSimpleDate(formatDate);
         String formattedDate = simpleDateFormat.format(date);
-        String persianDateString = convertDateToPersian(formattedDate,formatDate);
+        String persianDateString = convertDateToPersian(formattedDate, formatDate);
         return convertToJsonDate(persianDateString);
     }
 
@@ -44,7 +44,7 @@ public class DateConverter {
         return persianCalendar.getPersianShortDate();
     }
 
-    private static SimpleDateFormat getSimpleDate(){
+    private static SimpleDateFormat getSimpleDate() {
         return new SimpleDateFormat(DEFAULT_DATE_FORMAT);
     }
 

@@ -5,7 +5,6 @@ import lombok.Getter;
 
 /**
  * @author : Pedram Behradkian
- * @date : 2025/11/07
  */
 @AllArgsConstructor
 @Getter

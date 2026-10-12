@@ -9,11 +9,10 @@ import java.io.Serializable;
  * Enum for supported hashing algorithms.
  *
  * @author : Pedram Behradkian
- * @date : 2025/11/07
  */
 @Getter
 @AllArgsConstructor
-public enum HashAlgorithm  implements Serializable {
+public enum HashAlgorithm implements Serializable {
     MD5("MD5", 128),
     SHA1("SHA-1", 160),
     SHA224("SHA-224", 224),
@@ -33,7 +32,7 @@ public enum HashAlgorithm  implements Serializable {
     }
 
     public boolean isSHA() {
-        return name.split("-") [0].equals("SHA");
+        return name.split("-")[0].equals("SHA");
     }
 
     public boolean isCryptographicallySecure() {

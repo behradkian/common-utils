@@ -17,12 +17,12 @@ public abstract class RedissonCacheBaseInfo {
     public RedissonCacheBaseInfo() {
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public TimeUnit getTimeUnit() {

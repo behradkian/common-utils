@@ -1,11 +1,10 @@
 package radman.util.exception.domain;
 
-import radman.util.rest.enumeration.HttpStatusCode;
 import radman.util.exception.base.RadmanRuntimeException;
+import radman.util.rest.enumeration.HttpStatusCode;
 
 /**
  * @author : Pedram Behradkian
- * @date : 2025/11/02
  */
 public class BadRequestException extends RadmanRuntimeException {
     public BadRequestException(String message) {

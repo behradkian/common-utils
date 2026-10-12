@@ -1,6 +1,5 @@
 package radman.util.redis.manager;
 
-import radman.util.convertor.JsonConvertor;
 import org.redisson.Redisson;
 import org.redisson.api.RRateLimiter;
 import org.redisson.api.RateIntervalUnit;
@@ -9,17 +8,18 @@ import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import radman.util.convertor.JsonConvertor;
 
 import java.io.IOException;
 import java.util.HashMap;
 
 public class DistributedRedissonManager {
 
+    private static final HashMap<String, RRateLimiter> limiterHashMap = new HashMap<>();
+    private static final Logger LOGGER = LoggerFactory.getLogger(DistributedRedissonManager.class);
     private static RedissonClient redissonClient;
     private static RedissonClientConfiguration redissonClientConfiguration;
-    private static final HashMap<String, RRateLimiter> limiterHashMap = new HashMap<>();
     private static DistributedRedissonManager DISTRIBUTED_REDISSON_MANAGER = null;
-    private static final Logger LOGGER = LoggerFactory.getLogger(DistributedRedissonManager.class);
 
     private DistributedRedissonManager() {
         distributedRedissonCacheManagerInit();
@@ -35,18 +35,6 @@ public class DistributedRedissonManager {
             }
         }
         return DISTRIBUTED_REDISSON_MANAGER;
-    }
-
-    private void distributedRedissonCacheManagerInit() {
-        try {
-            LOGGER.info("initiate {} start has been started", DistributedRedissonManager.class.getName());
-            initRedissonClient();
-            initRateLimits();
-            LOGGER.info("initiate {} successfully! has been ended", DistributedRedissonManager.class.getName());
-        } catch (Exception e) {
-            LOGGER.error("there is problem in initiate {} with description:{}", DistributedRedissonManager.class.getName(), e.getMessage());
-            throw new RuntimeException(e.getMessage());
-        }
     }
 
     private static void CreatRedissonClientConfiguration() {
@@ -132,6 +120,18 @@ public class DistributedRedissonManager {
             }
         } else {
             LOGGER.warn("redissonClientConfiguration is null ");
+        }
+    }
+
+    private void distributedRedissonCacheManagerInit() {
+        try {
+            LOGGER.info("initiate {} start has been started", DistributedRedissonManager.class.getName());
+            initRedissonClient();
+            initRateLimits();
+            LOGGER.info("initiate {} successfully! has been ended", DistributedRedissonManager.class.getName());
+        } catch (Exception e) {
+            LOGGER.error("there is problem in initiate {} with description:{}", DistributedRedissonManager.class.getName(), e.getMessage());
+            throw new RuntimeException(e.getMessage());
         }
     }
 

@@ -51,12 +51,11 @@ public class RateLimiterConfiguration {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("RateLimiterConfiguration{");
-        sb.append("processRateLimiterName='").append(processRateLimiterName).append('\'');
-        sb.append(", timeInterval=").append(timeInterval);
-        sb.append(", maxRateLimit=").append(maxRateLimit);
-        sb.append(", rateLimiterStatus=").append(rateLimiterStatus);
-        sb.append('}');
-        return sb.toString();
+        String sb = "RateLimiterConfiguration{" + "processRateLimiterName='" + processRateLimiterName + '\'' +
+                ", timeInterval=" + timeInterval +
+                ", maxRateLimit=" + maxRateLimit +
+                ", rateLimiterStatus=" + rateLimiterStatus +
+                '}';
+        return sb;
     }
 }

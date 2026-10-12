@@ -11,7 +11,7 @@ import java.io.Serializable;
 @JsonFormat(with = JsonFormat.Feature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
 public enum Nationality implements Serializable {
 
-    IRAN(1,"Iran");
+    IRAN(1, "Iran");
 
     private final Integer id;
     private final String name;

@@ -23,14 +23,14 @@ public class RedissonCacheMap extends RedissonCacheBaseInfo {
     public void setMap(Map<String, String> map) {
         this.map = map;
     }
+
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("RedissonCacheInfo{");
-        sb.append("name='").append(super.getName()).append('\'');
-        sb.append(", timeUnit=").append(super.getTimeUnit());
-        sb.append(", expireTime=").append(super.getExpireTime());
-        sb.append(", map=").append(getMap());
-        sb.append('}');
-        return sb.toString();
+        String sb = "RedissonCacheInfo{" + "name='" + super.getName() + '\'' +
+                ", timeUnit=" + super.getTimeUnit() +
+                ", expireTime=" + super.getExpireTime() +
+                ", map=" + getMap() +
+                '}';
+        return sb;
     }
 }

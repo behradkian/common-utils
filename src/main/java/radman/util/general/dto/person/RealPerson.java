@@ -1,10 +1,10 @@
 package radman.util.general.dto.person;
 
-import radman.util.general.dto.location.City;
-import radman.util.general.enumeration.GenderType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import radman.util.general.dto.location.City;
+import radman.util.general.enumeration.GenderType;
 
 import java.util.Date;
 

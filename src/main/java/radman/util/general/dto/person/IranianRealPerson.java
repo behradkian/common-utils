@@ -1,10 +1,10 @@
 package radman.util.general.dto.person;
 
-import radman.util.general.enumeration.IranianNationalCardType;
-import radman.util.general.enumeration.Nationality;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import radman.util.general.enumeration.IranianNationalCardType;
+import radman.util.general.enumeration.Nationality;
 
 @Data
 @AllArgsConstructor

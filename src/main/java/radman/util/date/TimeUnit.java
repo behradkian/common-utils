@@ -7,6 +7,6 @@ public enum TimeUnit {
     MINUTE,
     HOUR,
     DAY,
-    WEEK;
+    WEEK
 
 }

@@ -11,21 +11,21 @@ public class PersianCalendar extends GregorianCalendar {
     private int persianDay;
     private String delimiter = "/";
 
-    private long convertToMilliSeconds(long julianDate) {
-        return -210866803200000L + julianDate * 86400000L + PersianCalendarUtils.ceil((double)(this.getTimeInMillis() - -210866803200000L), 8.64E7D);
-    }
-
     public PersianCalendar() {
         this.setTimeZone(TimeZone.getTimeZone("GMT"));
     }
 
+    private long convertToMilliSeconds(long julianDate) {
+        return -210866803200000L + julianDate * 86400000L + PersianCalendarUtils.ceil((double) (this.getTimeInMillis() - -210866803200000L), 8.64E7D);
+    }
+
     protected void calculatePersianDate() {
-        long julianDate = (long)Math.floor((double)(this.getTimeInMillis() - -210866803200000L)) / 86400000L;
+        long julianDate = (long) Math.floor((double) (this.getTimeInMillis() - -210866803200000L)) / 86400000L;
         long PersianRowDate = PersianCalendarUtils.julianToPersian(julianDate);
         long year = PersianRowDate >> 16;
-        int month = (int)(PersianRowDate & 65280L) >> 8;
-        int day = (int)(PersianRowDate & 255L);
-        this.persianYear = (int)(year > 0L ? year : year - 1L);
+        int month = (int) (PersianRowDate & 65280L) >> 8;
+        int day = (int) (PersianRowDate & 255L);
+        this.persianYear = (int) (year > 0L ? year : year - 1L);
         this.persianMonth = month;
         this.persianDay = day;
     }
@@ -38,7 +38,7 @@ public class PersianCalendar extends GregorianCalendar {
         this.persianYear = persianYear;
         this.persianMonth = persianMonth;
         this.persianDay = persianDay;
-        this.setTimeInMillis(this.convertToMilliSeconds(PersianCalendarUtils.persianToJulian((long)(this.persianYear > 0 ? this.persianYear : this.persianYear + 1), this.persianMonth - 1, this.persianDay)));
+        this.setTimeInMillis(this.convertToMilliSeconds(PersianCalendarUtils.persianToJulian(this.persianYear > 0 ? this.persianYear : this.persianYear + 1, this.persianMonth - 1, this.persianDay)));
     }
 
     public int getPersianYear() {
@@ -58,7 +58,7 @@ public class PersianCalendar extends GregorianCalendar {
     }
 
     public String getPersianWeekDayName() {
-        switch(this.get(7)) {
+        switch (this.get(7)) {
             case 1:
                 return PersianCalendarConstants.PERSIAN_WEEK_DAYS[1];
             case 2:

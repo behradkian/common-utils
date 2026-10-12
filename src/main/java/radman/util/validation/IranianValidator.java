@@ -12,14 +12,14 @@ public final class IranianValidator {
     }
 
     public static boolean isMobileNumberValid(String mobileNumber) {
-        if (StringUtility.isBlank(mobileNumber)){
+        if (StringUtility.isBlank(mobileNumber)) {
             return false;
         }
         return mobileNumber.matches("^(09\\d{9}|\\+989\\d{9})$");
     }
 
     public static boolean isPostalCodeValid(String postalCode) {
-        if (StringUtility.isBlank(postalCode)){
+        if (StringUtility.isBlank(postalCode)) {
             return false;
         }
         return postalCode.matches("^[13-9]{4}[1346-9][1-9](([0-9]{3}[1-9])|([1-9][0-9]{3})|([0-9][1-9][0-9]{2})|([0-9]{2}[1-9][0-9]))$");

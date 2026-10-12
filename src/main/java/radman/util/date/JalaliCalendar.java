@@ -10,22 +10,22 @@ public class JalaliCalendar extends Calendar {
     private static final long serialVersionUID = 0x8dddd79bbf54f43L;
     private static final int TSN_NATURAL = 0;
     private static final int TSN_KABISE = 1;
-    private static final int Khayyam_Table[] = {
+    private static final int[] Khayyam_Table = {
             5, 9, 13, 17, 21, 25, 29, 34, 38, 42,
             46, 50, 54, 58, 62, 67, 71, 75, 79, 83,
             87, 91, 95, 100, 104, 108, 112, 116, 120, 124
     };
     private static final TimeZone GMT_TIME_ZONE = TimeZone.getDefault();
-    private static final byte gregorianDaysInMonth[] = {
+    private static final byte[] gregorianDaysInMonth = {
             31, 28, 31, 30, 31, 30, 31, 31, 30, 31,
             30, 31
     };
-    private static final byte jalaliDaysInMonth[] = {
+    private static final byte[] jalaliDaysInMonth = {
             31, 31, 31, 31, 31, 31, 30, 30, 30, 30,
             30, 29
     };
-    private TimeZone desTimeZone;
-    private TimeZone eraTimeZone;
+    private final TimeZone desTimeZone;
+    private final TimeZone eraTimeZone;
     private boolean calcOverflow;
     private boolean computeDesTimeZone;
     private boolean isCalledConstructor;
@@ -155,7 +155,7 @@ public class JalaliCalendar extends Calendar {
             if (fields[5] == 0)
                 fields[5] = 1;
         }
-        int result[] = jalaliToGregorian(new int[]{
+        int[] result = jalaliToGregorian(new int[]{
                 fields[1], fields[2], fields[5]
         });
         calendar.set(result[0], result[1] - 1, result[2], fields[11], fields[12], fields[13]);
@@ -185,7 +185,7 @@ public class JalaliCalendar extends Calendar {
     }
 
     private void convert(Calendar calendar) {
-        int jalali[] = gregorianToJalali(new int[]{
+        int[] jalali = gregorianToJalali(new int[]{
                 calendar.get(1), calendar.get(2) + 1, calendar.get(5)
         });
         fields[1] = jalali[0];
@@ -200,7 +200,7 @@ public class JalaliCalendar extends Calendar {
             fields[14] = calendar.get(14);
     }
 
-    private int[] gregorianToJalali(int g[]) {
+    private int[] gregorianToJalali(int[] g) {
         int gy = g[0] - 1600;
         int gm = g[1] - 1;
         int gd = g[2] - 1;
@@ -232,7 +232,7 @@ public class JalaliCalendar extends Calendar {
         });
     }
 
-    private int[] jalaliToGregorian(int j[]) {
+    private int[] jalaliToGregorian(int[] j) {
         int jy = j[0] - 979;
         int jm = j[1] - 1;
         int jd = j[2] - 1;
@@ -306,9 +306,7 @@ public class JalaliCalendar extends Calendar {
             getDateTime();
             isDateTime = true;
         }
-        boolean bMnthLastDay = false;
-        if (fields[5] == daysOfMonth(fields[1], fields[2]))
-            bMnthLastDay = true;
+        boolean bMnthLastDay = fields[5] == daysOfMonth(fields[1], fields[2]);
         fields[1] -= dYear;
         fields[2] -= dMonth;
         fields[1] -= fields[2] % 12 >= 1 ? -(fields[2] / 12) : -(fields[2] / 12) + 1;
@@ -452,9 +450,7 @@ public class JalaliCalendar extends Calendar {
     }
 
     public void add(int field, int amount) {
-        boolean calcOverflow = false;
-        if (isCalcOverflow())
-            calcOverflow = true;
+        boolean calcOverflow = isCalcOverflow();
         switch (field) {
             case 3: // '\003'
             case 4: // '\004'
@@ -739,19 +735,19 @@ public class JalaliCalendar extends Calendar {
         return 7;
     }
 
-    public int getDay(){
+    public int getDay() {
         return CalendarUtil.getDateTime(this).getDay();
     }
 
-    public int getMonth(){
+    public int getMonth() {
         return CalendarUtil.getDateTime(this).getMonth();
     }
 
-    public String getMonthName(){
+    public String getMonthName() {
         return PersianMonthType.getById(CalendarUtil.getDateTime(this).getMonth()).getValue();
     }
 
-    public int getYear(){
+    public int getYear() {
         return CalendarUtil.getDateTime(this).getYear();
     }
 

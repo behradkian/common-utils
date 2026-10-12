@@ -1,7 +1,7 @@
 package radman.util.exception.base;
 
-import radman.util.rest.enumeration.HttpStatusCode;
 import lombok.Getter;
+import radman.util.rest.enumeration.HttpStatusCode;
 
 import java.io.Serial;
 import java.io.Serializable;

@@ -5,19 +5,19 @@ import redis.clients.jedis.Jedis;
 public class RedisConnection {
 
     public static void main(String[] args) {
-       setData("Ali", "Asghar");
-       getData("Ali");
+        setData("Ali", "Asghar");
+        getData("Ali");
     }
 
-    public static void getData(String key){
+    public static void getData(String key) {
         Jedis jedis = new Jedis("localhost", 6379);
         // دریافت داده از Redis
         String value = jedis.get(key);
-        System.out.println("داده دریافت شد: key -> " +  value);
+        System.out.println("داده دریافت شد: key -> " + value);
         jedis.close();
     }
 
-    public static void setData(String key, String value){
+    public static void setData(String key, String value) {
         // اتصال به سرور Redis
         Jedis jedis = new Jedis("localhost", 6379);
 

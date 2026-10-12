@@ -9,10 +9,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.*;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Locale;
+import java.util.TimeZone;
 
 public class DateUtil {
-    private static final int Khayyam_Table[] = {
+    private static final int[] Khayyam_Table = {
             5, 9, 13, 17, 21, 25, 29, 34, 38, 42,
             46, 50, 54, 58, 62, 67, 71, 75, 79, 83,
             87, 91, 95, 100, 104, 108, 112, 116, 120, 124
@@ -102,6 +106,7 @@ public class DateUtil {
         LocalDate sDate = LocalDate.of(sCal.get(Calendar.YEAR), sCal.get(Calendar.MONTH) + 1, sCal.get(Calendar.DAY_OF_MONTH));
         return Period.between(fDate, sDate).getYears();
     }
+
     /**
      * Returns True if Start date is before End Date.
      * <p>
@@ -110,13 +115,13 @@ public class DateUtil {
      * and a value greater than 0 if this Date is after the Date argument.
      * finally convert to boolean
      *
-     * @param  startDate  start Date
-     * @param  endDate end Date
-     * @return      the result of comparing two dates
-     * @see         Date
+     * @param startDate start Date
+     * @param endDate   end Date
+     * @return the result of comparing two dates
+     * @see Date
      */
-    public static boolean IsStartBeforeEnd(Date startDate, Date endDate){
-        return (startDate.compareTo(endDate) < 0 ? true : false);
+    public static boolean IsStartBeforeEnd(Date startDate, Date endDate) {
+        return (startDate.compareTo(endDate) < 0);
     }
 
 }

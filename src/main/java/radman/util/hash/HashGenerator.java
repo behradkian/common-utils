@@ -13,7 +13,13 @@ import java.nio.file.Path;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -27,7 +33,6 @@ import java.util.concurrent.ConcurrentHashMap;
  * - clearer exception messages
  *
  * @author : Pedram Behradkian
- * @date : 2025/11/07
  */
 public final class HashGenerator {
 

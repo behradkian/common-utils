@@ -1,8 +1,8 @@
 package radman.util.number.convertor;
 
-import radman.util.string.StringUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import radman.util.string.StringUtility;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -11,33 +11,7 @@ import java.text.DecimalFormat;
 public class WordsOfNumberConvertor {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WordsOfNumberConvertor.class);
-
-    private WordsOfNumberConvertor() {
-    }
-
-    public static String convertNumberToPersianWord(BigDecimal number){
-        return convertNumberToPersianWord(number.toString());
-    }
-
-    public static String convertNumberToEnglishWord(BigDecimal number){
-        return convertNumberToEnglishWord(number.toString());
-    }
-
-    public static String convertNumberToPersianWord(String number) {
-
-        if (StringUtility.isNumber(number))
-            return doNum(new BigDecimal(number), 0).trim();
-        else return "";
-    }
-
-    public static String convertNumberToEnglishWord(String number) {
-        if (StringUtility.isNumber(number))
-            return convertNumberToEnglishWord(Long.parseLong(number));
-        else return "";
-    }
-
     private static final String[] YEKAN = {"  یک ", "  دو ", " سه ", " چهار ", " پنج ", " شش ", " هفت ", " هشت ", " نه "};
-
     private static final String[] NUM_NAMES = {
             "",
             " one",
@@ -60,7 +34,6 @@ public class WordsOfNumberConvertor {
             " eighteen",
             " nineteen"
     };
-
     private static final String[] TENS_NAMES = {
             "",
             " ten",
@@ -73,12 +46,33 @@ public class WordsOfNumberConvertor {
             " eighty",
             " ninety"
     };
-
     private static final String[] DAHGAN = {" بیست ", " سی ", " چهل ", " پنجاه ", " شصت ", " هفتاد ", " هشتاد ", " نود "};
-
     private static final String[] SADGAN = {" یکصد ", " دویست ", " سیصد ", " چهارصد ", " پانصد ", " ششصد ", " هفتصد ", " هشتصد ", "نهصد "};
-
     private static final String[] DAH = {"  ده ", " یازده ", " دوازده ", " سیزده ", " چهارده ", " پانزده ", " شانزده ", " هفده ", " هیجده ", " نوزده "};
+
+    private WordsOfNumberConvertor() {
+    }
+
+    public static String convertNumberToPersianWord(BigDecimal number) {
+        return convertNumberToPersianWord(number.toString());
+    }
+
+    public static String convertNumberToEnglishWord(BigDecimal number) {
+        return convertNumberToEnglishWord(number.toString());
+    }
+
+    public static String convertNumberToPersianWord(String number) {
+
+        if (StringUtility.isNumber(number))
+            return doNum(new BigDecimal(number), 0).trim();
+        else return "";
+    }
+
+    public static String convertNumberToEnglishWord(String number) {
+        if (StringUtility.isNumber(number))
+            return convertNumberToEnglishWord(Long.parseLong(number));
+        else return "";
+    }
 
     private static String doNum(BigDecimal num, int level) {
         if (num == null)

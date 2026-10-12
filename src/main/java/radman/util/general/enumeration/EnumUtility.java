@@ -9,7 +9,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author : Pedram Behradkian
- * @date : 2025/11/02
  */
 public final class EnumUtility {
 

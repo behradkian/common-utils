@@ -1,8 +1,8 @@
 package radman.util.convertor;
 
+import radman.util.exception.domain.ConvertException;
 import radman.util.general.dto.AreaValue;
 import radman.util.general.enumeration.AreaUnit;
-import radman.util.exception.domain.ConvertException;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -13,7 +13,6 @@ import java.util.stream.Collectors;
 
 /**
  * @author : Pedram Behradkian
- * @date : 2025/11/07
  */
 public final class AreaConverter {
 

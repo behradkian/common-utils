@@ -4,7 +4,6 @@ import radman.util.exception.base.RadmanRuntimeException;
 
 /**
  * @author : Pedram Behradkian
- * @date : 2025/11/07
  */
 public class HashException extends RadmanRuntimeException {
     public HashException(String message) {

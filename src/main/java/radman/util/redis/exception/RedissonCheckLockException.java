@@ -1,8 +1,8 @@
 package radman.util.redis.exception;
 
-public class RedissonCheckLockException extends RedissonException{
+public class RedissonCheckLockException extends RedissonException {
 
-    public RedissonCheckLockException(String message){
+    public RedissonCheckLockException(String message) {
         super(message);
     }
 }

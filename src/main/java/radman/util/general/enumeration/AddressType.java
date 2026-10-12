@@ -1,8 +1,8 @@
 package radman.util.general.enumeration;
 
-import radman.util.exception.domain.InvalidEnumException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import radman.util.exception.domain.InvalidEnumException;
 
 import java.io.Serializable;
 import java.util.Arrays;

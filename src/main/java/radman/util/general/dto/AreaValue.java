@@ -1,13 +1,12 @@
 package radman.util.general.dto;
 
-import radman.util.general.enumeration.AreaUnit;
 import radman.util.convertor.AreaConverter;
+import radman.util.general.enumeration.AreaUnit;
 
 import java.math.BigDecimal;
 
 /**
  * @author : Pedram Behradkian
- * @date : 2025/11/07
  */
 public record AreaValue(BigDecimal value, AreaUnit unit) {
 

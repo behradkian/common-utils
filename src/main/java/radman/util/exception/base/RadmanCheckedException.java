@@ -1,7 +1,7 @@
 package radman.util.exception.base;
 
-import radman.util.rest.enumeration.HttpStatusCode;
 import lombok.Getter;
+import radman.util.rest.enumeration.HttpStatusCode;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -45,16 +45,6 @@ public abstract class RadmanCheckedException extends Exception implements Serial
         this.timestamp = Instant.now();
     }
 
-    public Map<String, Object> toMap() {
-        Map<String, Object> m = new HashMap<>();
-        m.put("status", status.getCode());
-        m.put("errorCode", errorCode);
-        m.put("message", getMessage());
-        m.put("timestamp", timestamp.toString());
-        if (!params.isEmpty()) m.put("params", params);
-        return Collections.unmodifiableMap(m);
-    }
-
     public static Map<String, Object> paramsOf(Object... keyValues) {
         if (keyValues == null || keyValues.length == 0) return Collections.emptyMap();
         if (keyValues.length % 2 != 0)
@@ -64,6 +54,16 @@ public abstract class RadmanCheckedException extends Exception implements Serial
             map.put(String.valueOf(keyValues[i]), keyValues[i + 1]);
         }
         return map;
+    }
+
+    public Map<String, Object> toMap() {
+        Map<String, Object> m = new HashMap<>();
+        m.put("status", status.getCode());
+        m.put("errorCode", errorCode);
+        m.put("message", getMessage());
+        m.put("timestamp", timestamp.toString());
+        if (!params.isEmpty()) m.put("params", params);
+        return Collections.unmodifiableMap(m);
     }
 
     @Override

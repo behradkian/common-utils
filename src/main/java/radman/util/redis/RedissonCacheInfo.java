@@ -12,10 +12,11 @@ public class RedissonCacheInfo extends RedissonCacheBaseInfo {
     }
 
     public RedissonCacheInfo(String name, String key, Object value, TimeUnit timeUnit, Long expireTime, String rateLimiterName) {
-        super(name,timeUnit,expireTime);
+        super(name, timeUnit, expireTime);
         this.key = key;
         this.value = value;
     }
+
     public String getKey() {
         return key;
     }
@@ -33,14 +34,13 @@ public class RedissonCacheInfo extends RedissonCacheBaseInfo {
     }
 
     public String toString() {
-        final StringBuilder sb = new StringBuilder("RedissonCacheInfo{");
-        sb.append("name='").append(super.getName()).append('\'');
-        sb.append(", key='").append(key).append('\'');
-        sb.append(", value=").append(value);
-        sb.append(", timeUnit=").append(super.getTimeUnit());
-        sb.append(", expireTime=").append(super.getExpireTime());
-        sb.append('}');
-        return sb.toString();
+        String sb = "RedissonCacheInfo{" + "name='" + super.getName() + '\'' +
+                ", key='" + key + '\'' +
+                ", value=" + value +
+                ", timeUnit=" + super.getTimeUnit() +
+                ", expireTime=" + super.getExpireTime() +
+                '}';
+        return sb;
     }
 
 }

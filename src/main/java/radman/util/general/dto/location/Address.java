@@ -1,9 +1,9 @@
 package radman.util.general.dto.location;
 
-import radman.util.general.enumeration.AddressType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import radman.util.general.enumeration.AddressType;
 
 @Data
 @AllArgsConstructor

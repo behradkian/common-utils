@@ -14,7 +14,6 @@ import java.util.Random;
  * and mathematical validations.
  *
  * @author : Pedram Behradkian
- * @date : 2025/11/02
  */
 public final class NumberUtility {
 

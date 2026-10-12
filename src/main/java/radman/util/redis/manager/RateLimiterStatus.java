@@ -1,17 +1,13 @@
 package radman.util.redis.manager;
 
 public enum RateLimiterStatus {
-    ENABLE (1),
-    DISABLE (0);
+    ENABLE(1),
+    DISABLE(0);
 
     private final int code;
 
     RateLimiterStatus(int code) {
         this.code = code;
-    }
-
-    public Integer getValue() {
-        return code;
     }
 
     public static RateLimiterStatus getByValue(int value) {
@@ -20,5 +16,9 @@ public enum RateLimiterStatus {
             case 0 -> DISABLE;
             default -> null;
         };
+    }
+
+    public Integer getValue() {
+        return code;
     }
 }

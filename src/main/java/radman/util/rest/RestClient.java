@@ -35,7 +35,6 @@ import java.util.stream.Collectors;
  * Enhanced REST client with improved functionality and error handling
  *
  * @author : Pedram Behradkian
- * @date : 2025/11/10
  */
 @Slf4j
 public class RestClient {
@@ -50,43 +49,6 @@ public class RestClient {
         this.defaultConnectionTimeout = builder.defaultConnectionTimeout;
         this.defaultReadTimeout = builder.defaultReadTimeout;
         this.defaultFollowRedirects = builder.defaultFollowRedirects;
-    }
-
-    public static class Builder {
-        private boolean enableSSLVerification = true;
-        private int defaultConnectionTimeout = 10000;
-        private int defaultReadTimeout = 30000;
-        private boolean defaultFollowRedirects = true;
-
-        public Builder enableSSLVerification(boolean enableSSLVerification) {
-            this.enableSSLVerification = enableSSLVerification;
-            return this;
-        }
-
-        public Builder defaultConnectionTimeout(int defaultConnectionTimeout) {
-            if (defaultConnectionTimeout < 1000) {
-                throw new IllegalArgumentException("Connection timeout must be at least 1000ms");
-            }
-            this.defaultConnectionTimeout = defaultConnectionTimeout;
-            return this;
-        }
-
-        public Builder defaultReadTimeout(int defaultReadTimeout) {
-            if (defaultReadTimeout < 1000) {
-                throw new IllegalArgumentException("Read timeout must be at least 1000ms");
-            }
-            this.defaultReadTimeout = defaultReadTimeout;
-            return this;
-        }
-
-        public Builder defaultFollowRedirects(boolean defaultFollowRedirects) {
-            this.defaultFollowRedirects = defaultFollowRedirects;
-            return this;
-        }
-
-        public RestClient build() {
-            return new RestClient(this);
-        }
     }
 
     public static Builder builder() {
@@ -108,11 +70,11 @@ public class RestClient {
         }
     }
 
-    // === Utility Methods for Common HTTP Operations ===
-
     public RestResponseDto get(String url) {
         return call(buildDefaultRequest(url, HttpMethod.GET));
     }
+
+    // === Utility Methods for Common HTTP Operations ===
 
     public RestResponseDto get(String url, Map<String, String> queryParams) {
         return call(buildDefaultRequest(url, HttpMethod.GET)
@@ -387,8 +349,7 @@ public class RestClient {
         try (OutputStream os = connection.getOutputStream();
              PrintWriter writer = new PrintWriter(new OutputStreamWriter(os, StandardCharsets.UTF_8), true)) {
 
-            if (request.getBody() instanceof Map) {
-                Map<?, ?> formData = (Map<?, ?>) request.getBody();
+            if (request.getBody() instanceof Map<?, ?> formData) {
                 for (Map.Entry<?, ?> entry : formData.entrySet()) {
                     writer.append("--").append(boundary).append("\r\n");
                     writer.append("Content-Disposition: form-data; name=\"").append(entry.getKey().toString()).append("\"\r\n\r\n");
@@ -398,7 +359,6 @@ public class RestClient {
             writer.append("--").append(boundary).append("--\r\n");
         }
     }
-
 
     private String convertBodyToString(RestRequestDto request) {
         if (request.getBody() == null) {
@@ -540,11 +500,43 @@ public class RestClient {
     }
 
     private String encode(String value) {
-        try {
-            return URLEncoder.encode(value, StandardCharsets.UTF_8.name());
-        } catch (UnsupportedEncodingException e) {
-            log.warn("UTF-8 encoding not supported, using default encoding");
-            return URLEncoder.encode(value);
+        return URLEncoder.encode(value, StandardCharsets.UTF_8);
+    }
+
+    public static class Builder {
+        private boolean enableSSLVerification = true;
+        private int defaultConnectionTimeout = 10000;
+        private int defaultReadTimeout = 30000;
+        private boolean defaultFollowRedirects = true;
+
+        public Builder enableSSLVerification(boolean enableSSLVerification) {
+            this.enableSSLVerification = enableSSLVerification;
+            return this;
+        }
+
+        public Builder defaultConnectionTimeout(int defaultConnectionTimeout) {
+            if (defaultConnectionTimeout < 1000) {
+                throw new IllegalArgumentException("Connection timeout must be at least 1000ms");
+            }
+            this.defaultConnectionTimeout = defaultConnectionTimeout;
+            return this;
+        }
+
+        public Builder defaultReadTimeout(int defaultReadTimeout) {
+            if (defaultReadTimeout < 1000) {
+                throw new IllegalArgumentException("Read timeout must be at least 1000ms");
+            }
+            this.defaultReadTimeout = defaultReadTimeout;
+            return this;
+        }
+
+        public Builder defaultFollowRedirects(boolean defaultFollowRedirects) {
+            this.defaultFollowRedirects = defaultFollowRedirects;
+            return this;
+        }
+
+        public RestClient build() {
+            return new RestClient(this);
         }
     }
 }

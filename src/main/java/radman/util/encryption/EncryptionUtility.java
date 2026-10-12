@@ -2,19 +2,37 @@ package radman.util.encryption;
 
 import radman.util.exception.domain.EncryptionException;
 
-import javax.crypto.*;
+import javax.crypto.Cipher;
+import javax.crypto.CipherInputStream;
+import javax.crypto.CipherOutputStream;
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.GCMParameterSpec;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
-import java.security.*;
+import java.security.GeneralSecurityException;
+import java.security.Key;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.NoSuchAlgorithmException;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.SecureRandom;
 import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.KeySpec;
 import java.security.spec.InvalidKeySpecException;
-import java.util.*;
+import java.security.spec.KeySpec;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -23,13 +41,12 @@ import java.util.concurrent.ConcurrentHashMap;
  * Uses EncryptionAlgorithm, KeyDerivationAlgorithm, SecurityLevel enums.
  *
  * @author : Pedram Behradkian
- * @date : 2025/11/07
  */
 public final class EncryptionUtility {
 
+    public static final int MAX_DATA_SIZE = 10 * 1024 * 1024; // 10MB
     private static final SecureRandom SECURE_RANDOM = new SecureRandom();
     private static final Map<String, ThreadLocal<Cipher>> CIPHER_CACHE = new ConcurrentHashMap<>();
-    public static final int MAX_DATA_SIZE = 10 * 1024 * 1024; // 10MB
 
     private EncryptionUtility() {
         throw new AssertionError("Utility class should not be instantiated");

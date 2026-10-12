@@ -1,24 +1,24 @@
 package radman.util.redis;
 
-import radman.util.redis.exception.RedissonAcquireLockException;
-import radman.util.redis.exception.RedissonCheckLockException;
-import radman.util.redis.exception.RedissonNullLockObjectException;
-import radman.util.redis.manager.DistributedRedissonManager;
-import radman.util.redis.manager.RedissonClientConfiguration;
-import radman.util.redis.manager.RedissonOperation;
 import org.redisson.api.RLock;
 import org.redisson.api.RMapCache;
 import org.redisson.api.RRateLimiter;
 import org.redisson.api.RedissonClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import radman.util.redis.exception.RedissonAcquireLockException;
+import radman.util.redis.exception.RedissonCheckLockException;
+import radman.util.redis.exception.RedissonNullLockObjectException;
+import radman.util.redis.manager.DistributedRedissonManager;
+import radman.util.redis.manager.RedissonClientConfiguration;
+import radman.util.redis.manager.RedissonOperation;
 
 import java.util.concurrent.TimeUnit;
 
 public class RedissonOperationImpl implements RedissonOperation {
 
-    private static RedissonOperationImpl REDISSON_OPERATION_IMPL;
     private static final Logger LOGGER = LoggerFactory.getLogger(RedissonOperationImpl.class);
+    private static RedissonOperationImpl REDISSON_OPERATION_IMPL;
 
     private RedissonOperationImpl() {
 
